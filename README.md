@@ -1,15 +1,28 @@
 # ZBufferToy
 Codi de la Pràctica 2 de GiVD: ZBufferToy 2022-23
 
-::
+## Taula de continguts
 
-    Aquest és el model base del README.rst que haureu d'omplir com a documentació de la pràctica. De cara a la presentació d'aquests document, si us plau, esborreu les notes i aquest text. 
+* [Equip](#Equip)
+* [Abstract](#Abstract)
+* [Features](#Features)
+* [Extensions addicionals](#Extensions)
+* [Memòria](#Memòria)
+
+
+## Equip
+
+**B03**
+* Arturo Latorre
+* Zijian Jiang
+* Nil Torrelles
+* Asier Augusto
     
-**Abstract**
+##Abstract
 
 Petit resum de fins on heu arribat a fer
 
-**Features**
+##Features
 
 A continuació s'indica quines parts s'han fet i qui les ha implementat
 - Fase 1
@@ -51,7 +64,7 @@ A continuació s'indica quines parts s'han fet i qui les ha implementat
     - [ ] Transparències via environmental mapping
 
 
-**Extensions addicionals**
+##Extensions
 
 
-**Memòria**
+##Memòria
