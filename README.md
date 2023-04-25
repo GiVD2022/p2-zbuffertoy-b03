@@ -18,11 +18,11 @@ Codi de la Pràctica 2 de GiVD: ZBufferToy 2022-23
 * Nil Torrelles
 * Asier Augusto
     
-##Abstract
+## Abstract
 
 Petit resum de fins on heu arribat a fer
 
-##Features
+## Features
 
 A continuació s'indica quines parts s'han fet i qui les ha implementat
 - Fase 1
@@ -64,7 +64,7 @@ A continuació s'indica quines parts s'han fet i qui les ha implementat
     - [ ] Transparències via environmental mapping
 
 
-##Extensions
+## Extensions
 
 
-##Memòria
+## Memòria
