@@ -66,7 +66,9 @@ void GPUSetUp::addLight(shared_ptr<GPULight> l) {
  */
 void GPUSetUp::setAmbientGlobalToGPU(shared_ptr<QGLShaderProgram> program){
     // Pràctica 2: TO DO: A implementar a la fase 1
-
+    GLuint Ia;
+    Ia = program->uniformLocation("IaGlobal");
+    glUniform3fv(Ia,1,globalLight);
 }
 
 /**

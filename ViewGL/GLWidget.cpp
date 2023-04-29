@@ -1,6 +1,7 @@
 #include "ViewGL/GLWidget.hh"
 
 
+
 GLWidget::GLWidget(QWidget *parent) : QGLWidget(QGLFormat(QGL::SampleBuffers), parent) {
 
     setFocusPolicy( Qt::StrongFocus );
@@ -42,6 +43,10 @@ void GLWidget::initializeGL() {
     auto l  = GPULightFactory::getInstance().createLight(LightFactory::POINTLIGHT);
     ligths.push_back(l);
     Controller::getInstance()->getSetUp()->setLights(ligths);
+    //P1.1
+    vec3 globalLight = 1;
+    Controller::getInstance()->getSetUp()->setGlobalLight(globalLight);
+    Controller::getInstance()->getSetUp()->setAmbientGlobalToGPU(this->program);
 
     shared_ptr<GPUCamera> camera = Controller::getInstance()->getSetUp()->getCamera();
     auto scene = Controller::getInstance()->getScene();

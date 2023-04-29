@@ -17,6 +17,7 @@
 
 #include "GPUConnections/GPUScene.hh"
 #include "GPUConnections/GPUCamera.hh"
+#include "GPUConnections/GPUSetUp.hh"
 
 #include "Model/Modelling/Lights/LightFactory.hh"
 #include "Model/Modelling/Animation.hh"
