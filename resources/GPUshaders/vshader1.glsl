@@ -6,6 +6,9 @@ layout (location = 1) in vec4 vColor;
 uniform mat4 model_view;
 uniform mat4 projection;
 
+//Fase 1: Creem el vec3 de floats perque pugui aceptar-ho (N6)
+uniform vec3 glAmbientLight;
+
 out vec4 color;
 
 void main()
