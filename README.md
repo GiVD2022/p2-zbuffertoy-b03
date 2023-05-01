@@ -28,9 +28,11 @@ A continuació s'indica quines parts s'han fet i qui les ha implementat
 - Fase 1
     - Lights
         - [x] Ambient Global [Nil]
-        - [ ] Puntual [Nil] -> Almost there
-        - [ ] Direccional [Nil] -> Almost there
-        - [ ] Spotlight [Nil] -> Almost there
+        - [x] Puntual [Nil] 
+        - [x] Direccional [Nil] 
+        - [x] Spotlight [Nil] 
+        - [x] Conexió GPU [Nil]
+        - [ ] Testeig [Nil] -> Almost there
     - Materials: 
        - [ ] Pas a la GPU
        - [ ] Lectura de fitxers .json
