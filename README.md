@@ -27,10 +27,10 @@ Petit resum de fins on heu arribat a fer
 A continuació s'indica quines parts s'han fet i qui les ha implementat
 - Fase 1
     - Lights
-        - [ ] Ambient Global 
-        - [ ] Puntual
-        - [ ] Direccional 
-        - [ ] Spotlight 
+        - [x] Ambient Global [Nil]
+        - [ ] Puntual [Nil] -> Almost there
+        - [ ] Direccional [Nil] -> Almost there
+        - [ ] Spotlight [Nil] -> Almost there
     - Materials: 
        - [ ] Pas a la GPU
        - [ ] Lectura de fitxers .json
@@ -68,3 +68,13 @@ A continuació s'indica quines parts s'han fet i qui les ha implementat
 
 
 ## Memòria
+
+- Fase 1
+    Decideix el moment en el que cal passar la llum ambient global a la GPU (al initializeGL? Al updateGL? En
+    crear un objecte? ). 
+    -> Pasarem la llum ambient global, al initialieGL (metode de la classe GlWidget), es a dir, al inicialitzar l'aplicació. Ja que volem que la llum ambient global, 
+        sigui estàtica, i no es modifiqui durant el trancurs de l'execució.
+    
+    Ara es crea una llum puntual al initializeGL() de la classe GLWidget, quan l’hauries de passar a la GPU? A l’inici de
+    tot? Cada vegada que es visualitza l’escena? 
+        
