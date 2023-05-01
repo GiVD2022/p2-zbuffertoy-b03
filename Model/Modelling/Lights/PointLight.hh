@@ -20,6 +20,12 @@ public:
     PointLight(vec3 posicio, vec3 Ia, vec3 Id, vec3 Is, float a, float b, float c);
     virtual ~PointLight() {}
     vec3 getPos();
+
+    //Afegeixo getters del terme constant, lineal i quadratic (N6)
+    float getA();
+    float getB();
+    float getC();
+
     virtual vec3 vectorL(vec3 point) override;
     virtual float attenuation(vec3 point) override;
     virtual float distanceToLight(vec3 point) override;

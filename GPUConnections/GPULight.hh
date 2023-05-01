@@ -2,6 +2,7 @@
 
 #include "GPUConnections/GPUConnectable.hh"
 #include "Model/Modelling/Lights/Light.hh"
+
 using namespace std;
 
 class GPULight: public Light, public GPUConnectable {
@@ -25,6 +26,23 @@ public:
     virtual float distanceToLight(vec3 point) override = 0;
 
     virtual void toGPU(shared_ptr<QGLShaderProgram> p) override;
+
+private:
+    //My atributes (N6) (i si, ha de ser un struct perque ho demanen)
+    struct gl_lights{
+       GLuint glIa;
+       GLuint glId;
+       GLuint glIs;
+       GLuint glPos;
+       GLuint glDir;
+       GLuint glA;
+       GLuint glB;
+       GLuint glC;
+       GLuint glCosAngle; //coseno
+
+    };
+
+    gl_lights gl_my_lights[9];
 
 };
 

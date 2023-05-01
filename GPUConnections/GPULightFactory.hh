@@ -5,6 +5,9 @@
 #include "GPUConnections/GPUPointLight.hh"
 #include "Model/Modelling/Lights/LightFactory.hh"
 
+#include "GPUConnections/GPUSpotLight.hh"
+#include "GPUConnections/GPUDirectionalLight.hh"
+
 class GPULightFactory: public Singleton<GPULightFactory>
 {
     // needs to be friend in order to
@@ -16,6 +19,6 @@ private:
 public:  
 
     shared_ptr<GPULight> createLight( LightFactory::LIGHT_TYPES t);
-    shared_ptr<GPULight> createLight(vec3 posicio, vec3 Ia, vec3 Id, vec3 Is, float a, float b, float c,  LightFactory::LIGHT_TYPES t);
+    shared_ptr<GPULight> createLight(vec3 posicio, vec3 dir, vec3 Ia, vec3 Id, vec3 Is, float a, float b, float c, float angle,  LightFactory::LIGHT_TYPES t);
 
 };

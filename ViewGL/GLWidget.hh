@@ -17,6 +17,7 @@
 
 #include "GPUConnections/GPUScene.hh"
 #include "GPUConnections/GPUCamera.hh"
+#include "GPUConnections/GPUSetUp.hh"
 
 #include "Model/Modelling/Lights/LightFactory.hh"
 #include "Model/Modelling/Animation.hh"
@@ -100,6 +101,10 @@ private:
     // TO DO: Pràctica 2: Fase 1: Per ara nomes es té un parell vertex-fragment
     // i cal estendre-ho a tenir mé parells
     shared_ptr<QGLShaderProgram> program;
+
+    //Creo un objecte del tipus GPUSetUP, per poder utilitzar els metodes en la meva classe (N6)
+    //Fase1: Pas1
+    GPUSetUp myGPUSetUp;
 
     void initShadersGPU();
 

@@ -27,25 +27,31 @@ public:
 
     virtual ~GPUSetUp() {};
 
+
+    // TODO Pràctica 2: FASE 1: Enviar les llums a la GPU
+
+    // He fet els métodes publics, per tal de poder utilitzarlos com vulgui (N6)
+    void lightsToGPU(shared_ptr<QGLShaderProgram> program);
+    void setAmbientGlobalToGPU(shared_ptr<QGLShaderProgram> program);
+
+    shared_ptr<GPULight> getLightActual();
+    void setLightActual(shared_ptr<GPULight> l);
+    void addLight(shared_ptr<GPULight> l);
+
 private:
 
     // Camera
     shared_ptr<GPUCamera> camera;
 
     // TODO Pràctica 2: FASE 1: Afegir llums a l'escena
+    // My global variables (N6)
+    GLuint aL; //ambient light, recorda que esta definida a vshader.gls com glAmbientLight
+
     // Vector de llums de l'escena
     std::vector<shared_ptr<GPULight>> lights;
     // Llum global
     vec3 globalLight;
 
-    shared_ptr<GPULight> getLightActual();
-    void setLightActual(shared_ptr<GPULight> l);
-    void addLight(shared_ptr<GPULight> l);
-
-    // TODO Pràctica 2: FASE 1: Enviar les llums a la GPU
-
-    void lightsToGPU(shared_ptr<QGLShaderProgram> program);
-    void setAmbientGlobalToGPU(shared_ptr<QGLShaderProgram> program);
 
 };
 

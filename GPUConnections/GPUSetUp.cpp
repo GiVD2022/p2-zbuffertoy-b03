@@ -64,18 +64,39 @@ void GPUSetUp::addLight(shared_ptr<GPULight> l) {
  * @brief Scene::setAmbientToGPU
  * @param program
  */
-void GPUSetUp::setAmbientGlobalToGPU(shared_ptr<QGLShaderProgram> program){
-    // Pràctica 2: TO DO: A implementar a la fase 1
 
+// Aquest es el metode que envia les llums a la GPU (N6)
+void GPUSetUp::setAmbientGlobalToGPU(shared_ptr<QGLShaderProgram> program){
+    // Pràctica 2: Fase 1 lights
+    vec3 vector3D(0.2f, 0.2f, 0.2f); // Valors llum ammbiental (vector de floats) (N6)
+    // Obtenim ubi memoria GPU per la variable uniforme glAmbientLight (N6)
+    this->aL =  program->uniformLocation("glAmbientLight");
+    // Enviem valors ddel vector 3D a la GPU (N6)
+    glUniform3fv(aL, 1, vector3D);
 }
+
+
+
+/* N6
+ * El mètode lightsToGPU de la classe GPUSetUp serveix per enviar la informació de totes les llums actives del escenari a la GPU,
+ * de manera que puguin ser utilitzades durant el renderitzat de la imatge.
+    Aquest mètode recorre el vector de llums actives lights, que conté totes les llums que estan sent utilitzades en el moment de renderitzar
+ el model. Per cada llum, es crida el mètode toGPU de la classe GPULight, que s'encarrega d'actualitzar els paràmetres de la llum en el shader
+ de OpenGL corresponent.
+ */
 
 /**
  * @brief GPUSetUp::lightsToGPU
  * @param program
  */
+
 void GPUSetUp::lightsToGPU(shared_ptr<QGLShaderProgram> program){
     // Practica 2: TO DO: A implementar a la fase 1
-
+    //N6 DONE
+    for (shared_ptr<GPULight> light : lights) {
+        // Actualizamos los parámetros de la luz en el shader
+        light->toGPU(program);
+    }
 }
 
 // TODO (opcional) si es llegeix el setUp de fitxer cal alctualitzar aquest codi per

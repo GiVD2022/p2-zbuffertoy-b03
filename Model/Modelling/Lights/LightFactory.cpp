@@ -2,22 +2,39 @@
 
 //! createLight
 //! TODO: Fase 2: Incloure els diferents tipus de llum
+//!
+//! Els afegim -> N6
 shared_ptr<Light> LightFactory::createLight(LIGHT_TYPES t) {
     shared_ptr<Light> l;
     switch(t) {
     case POINTLIGHT:
         l = make_shared<PointLight>();
         break;
+
+    case DIRECTIONALLIGHT:
+        l = make_shared<DirectionalLight>();
+        break;
+
+    case SPOTLIGHT:
+        l = make_shared<SpotLight>();
+        break;
+
     default:
         break;
     }
     return l;
 }
-shared_ptr<Light> LightFactory::createLight(vec3 posicio, vec3 Ia, vec3 Id, vec3 Is, float a, float b, float c, LIGHT_TYPES t) {
+shared_ptr<Light> LightFactory::createLight(vec3 posicio, vec3 dir, vec3 Ia, vec3 Id, vec3 Is, float a, float b, float c, float angle,  LIGHT_TYPES t) {
     shared_ptr<Light> l;
     switch(t) {
     case POINTLIGHT:
         l = make_shared<PointLight>(posicio, Ia, Id, Is, a, b, c);
+        break;
+    case DIRECTIONALLIGHT:
+        l = make_shared<DirectionalLight>(dir, Ia, Id, Is);
+        break;
+    case SPOTLIGHT:
+        l = make_shared<SpotLight>(posicio, dir, Ia, Id, Is, a, b, c, angle);
         break;
     default:
         break;
@@ -38,6 +55,7 @@ LightFactory::LIGHT_TYPES LightFactory::getLightType( QString name) {
     else if (name=="SPOTLIGHT") return LIGHT_TYPES::SPOTLIGHT;
     else if (name=="DIRECTIONALLIGHT") return LIGHT_TYPES::DIRECTIONALLIGHT;
     else if (name=="AREALIGHT") return LIGHT_TYPES::AREALIGHT;
+
     else return  LIGHT_TYPES::POINTLIGHT;
 }
 
