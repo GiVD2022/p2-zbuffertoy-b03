@@ -38,9 +38,24 @@ void GLWidget::initializeGL() {
 
     // Creacio d'una Light per a poder modificar el seus valors amb la interficie
     // TO DO: Pràctica 2: Fase 1:  Canviar per a que siguin GPULigths i usar la factory GPULightFactory que facis nova
+    //N6 DONE
+
+    // Hola! myGPUSetUp i program, son atributs definits en la classe GLWidget.hh, useulos per cridar a tots els metodes de la classe GPUSetUP (N6)
+    this->myGPUSetUp.setAmbientGlobalToGPU(this->program);
+
     std::vector<shared_ptr<GPULight>> ligths;
-    auto l  = GPULightFactory::getInstance().createLight(LightFactory::POINTLIGHT);
-    ligths.push_back(l);
+    //N6 llum puntual
+    auto pointLight  = GPULightFactory::getInstance().createLight(LightFactory::POINTLIGHT);
+    ligths.push_back(pointLight);
+
+    //N6 llum direccional
+    auto directionalLight  = GPULightFactory::getInstance().createLight(LightFactory::DIRECTIONALLIGHT);
+    ligths.push_back(directionalLight);
+
+    //N6 llum SpotLight
+    auto spotLight  = GPULightFactory::getInstance().createLight(LightFactory::SPOTLIGHT);
+    ligths.push_back(spotLight);
+
     Controller::getInstance()->getSetUp()->setLights(ligths);
 
     shared_ptr<GPUCamera> camera = Controller::getInstance()->getSetUp()->getCamera();

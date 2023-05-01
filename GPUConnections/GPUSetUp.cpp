@@ -75,13 +75,28 @@ void GPUSetUp::setAmbientGlobalToGPU(shared_ptr<QGLShaderProgram> program){
     glUniform3fv(aL, 1, vector3D);
 }
 
+
+
+/* N6
+ * El mètode lightsToGPU de la classe GPUSetUp serveix per enviar la informació de totes les llums actives del escenari a la GPU,
+ * de manera que puguin ser utilitzades durant el renderitzat de la imatge.
+    Aquest mètode recorre el vector de llums actives lights, que conté totes les llums que estan sent utilitzades en el moment de renderitzar
+ el model. Per cada llum, es crida el mètode toGPU de la classe GPULight, que s'encarrega d'actualitzar els paràmetres de la llum en el shader
+ de OpenGL corresponent.
+ */
+
 /**
  * @brief GPUSetUp::lightsToGPU
  * @param program
  */
+
 void GPUSetUp::lightsToGPU(shared_ptr<QGLShaderProgram> program){
     // Practica 2: TO DO: A implementar a la fase 1
-
+    //N6 DONE
+    for (shared_ptr<GPULight> light : lights) {
+        // Actualizamos los parámetros de la luz en el shader
+        light->toGPU(program);
+    }
 }
 
 // TODO (opcional) si es llegeix el setUp de fitxer cal alctualitzar aquest codi per

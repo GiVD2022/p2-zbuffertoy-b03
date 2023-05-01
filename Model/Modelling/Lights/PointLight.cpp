@@ -11,6 +11,19 @@ vec3 PointLight::getPos() {
     return this->pos;
 }
 
+// Afegim getter A, B, C (N6) -> Per si es necesari
+float PointLight::getA(){
+    return this->a;
+}
+
+float PointLight::getB(){
+    return this->b;
+}
+
+float PointLight::getC(){
+    return this->c;
+}
+
 vec3 PointLight::vectorL(vec3 point) {
     return normalize(pos - point);
 }

@@ -9,6 +9,7 @@
 using namespace std;
 
 class Light: public Serializable {
+
 protected:
     vec3 Ia;
     vec3 Id;

@@ -21,22 +21,6 @@ vec3 Light::getIs() {
     return Is;
 }
 
-/**
- * @brief Light::setId
- * @param i
- */
-void Light::setId(vec3 i) {
-    // TO DO: Pràctica 2: A canviar a la fase 1
-
-}
-
-/**
- * @brief Light::setLightPosition
- * @param v
- */
-void Light::setLightPosition(vec4 v) {
-    // TO DO: Pràctica 2: A canviar a la fase 1
-}
 
 /**
  * @brief Light::setIa
@@ -45,6 +29,8 @@ void Light::setLightPosition(vec4 v) {
 void Light::setIa(const vec3 &value)
 {
    // TO DO: Pràctica 2: A canviar a la fase 1
+   //N6 DONE
+   this->Ia = value;
 
 }
 
@@ -55,7 +41,33 @@ void Light::setIa(const vec3 &value)
 void Light::setIs(const vec3 &value)
 {
     // TO DO: Pràctica 2: A canviar a la fase 1
+    //N6 DOne
+    this->Is = value;
 }
+
+/**
+ * @brief Light::setId
+ * @param i
+ */
+void Light::setId(vec3 i) {
+    // TO DO: Pràctica 2: A canviar a la fase 1
+    //N6 DOne
+    this->Id = i;
+
+}
+
+/**
+ * @brief Light::setLightPosition
+ * @param v
+ */
+
+vec4 Light::getLightPosition(){
+    //TO DO
+}
+void Light::setLightPosition(vec4 v) {
+    // TO DO: Pràctica 2: A canviar a la fase 1
+}
+
 
 /**
  * @brief Light::getCoeficients
