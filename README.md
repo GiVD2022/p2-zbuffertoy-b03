@@ -27,7 +27,7 @@ Petit resum de fins on heu arribat a fer
 A continuació s'indica quines parts s'han fet i qui les ha implementat
 - Fase 1
     - Lights
-        - [x] Ambient Global [Nil] + [Zijian]
+        - [x] Ambient Global [Nil] + [Zijian] + [Asier]
         - [x] Puntual [Nil] 
         - [x] Direccional [Nil] 
         - [x] Spotlight [Nil] 
