@@ -1,0 +1,42 @@
+#include "GPUConnections/GPUMaterial.hh"
+
+vec3 Ka;
+vec3 Kd;
+vec3 Ks;
+
+float shininess;
+float opacity; 
+GPUMaterial::GPUMaterial(vec3 Ka, vec3 Kd, vec3 Ks, vec3, float shiness, float opacity): Material(Ka, Kd, Ks, shiness, opacity){
+}
+
+GPUMaterial::GPUMaterial() {
+}
+
+void GPUMaterial::toGPU(shared_ptr<QGLShaderProgram> p) {
+    // TO DO Pràctica 2: Fase 1: enviar les propietats de Ia, Id i Is a la GPU
+
+    //N6
+    // Obtenir ubis de les variables del Shader
+    gl_my_materials[0].glKa = program->uniformLocation(QString("myMaterials[%0].Ka").arg(0));
+    gl_my_materials[1].glKd = program->uniformLocation(QString("myMaterials[%1].Kd").arg(1));
+    gl_my_materials[2].glKs = program->uniformLocation(QString("myMaterials[%2].Ks").arg(2));
+    gl_my_materials[3].glKt = program->uniformLocation(QString("myMaterials[%2].Kt").arg(3));
+    gl_my_materials[4].glShiness = program->uniformLocation(QString("myMaterials[%3].shiness").arg(4));
+    gl_my_materials[5].glOpacity = program->uniformLocation(QString("myMaterials[%4].opacity").arg(5));
+    
+    vec3 vectorKa(0.1f, 0.1f, 0.1f);
+    vec3 vectorKd(1.0f, 1.0f, 1.0f);
+    vec3 vectorKs(0.8f, 0.8f, 0.8f);
+    vec3 vectorKt(0.8f, 0.8f, 0.8f);
+    vec3 vectorShiness(10, 5, 0);
+    vec3 vectorOpacity(10, 5, 0);
+
+    // Enviar valors a GPU
+    glUniform3fv(gl_my_materials[0].glKa, 1, vectorKa);
+    glUniform3fv(gl_my_materials[1].glKd, 1, vectorKd);
+    glUniform3fv(gl_my_materials[2].glKs, 1, vectorKs);
+    glUniform3fv(gl_my_materials[3].glKt, 1, vectorKt);
+    glUniform3fv(gl_my_materials[4].glShiness, 1, vectorShiness);
+    glUniform3fv(gl_my_materials[5].glOpacity, 1, vectorOpacity);
+
+}
