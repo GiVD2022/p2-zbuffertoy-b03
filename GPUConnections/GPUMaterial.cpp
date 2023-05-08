@@ -8,10 +8,7 @@ GPUMaterial::GPUMaterial() {
 }
 
 void GPUMaterial::toGPU(shared_ptr<QGLShaderProgram> p) {
-    // TO DO Pràctica 2: Fase 1: enviar les propietats de Ia, Id i Is a la GPU
 
-    //N6
-    // Obtenir ubis de les variables del Shader
     gl_my_materials[0].glKa = program->uniformLocation(QString("myMaterials[%0].Ia").arg(0));
     gl_my_materials[1].glKd = program->uniformLocation(QString("myMaterials[%1].Id").arg(1));
     gl_my_materials[2].glKs = program->uniformLocation(QString("myMaterials[%2].Is").arg(2));
@@ -19,10 +16,10 @@ void GPUMaterial::toGPU(shared_ptr<QGLShaderProgram> p) {
     gl_my_materials[4].glOpacity = program->uniformLocation(QString("myMaterials[%4].dir").arg(4));
 
     vec3 vectorKa(0.1f, 0.1f, 0.1f);
-    vec3 vectorKd(1.0f, 1.0f, 1.0f);
+    vec3 vectorKd(1.0f, 0.0f, 0.0f);
     vec3 vectorKs(0.8f, 0.8f, 0.8f);
 
-    float shiness = 3.3f; // només es una posició per la llum puntual
+    float shiness = 3.3f;
     float opacity = 2.0f;
 
 
@@ -64,8 +61,6 @@ void GPUMaterial::read (const QJsonObject &json)
         opacity = json["opacity"].toDouble();
 
 }
-
-
 //! [1]
 void GPUMaterial::write(QJsonObject &json) const
 {

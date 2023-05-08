@@ -25,7 +25,7 @@ public:
 
 private:
 
-    GPUMaterial material;
+    shared_ptr<GPUMaterial> material;
 };
 
 

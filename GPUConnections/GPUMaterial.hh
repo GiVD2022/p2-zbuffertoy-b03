@@ -13,7 +13,7 @@ public:
     virtual ~GPUMaterial() {};
 
     virtual void toGPU(shared_ptr<QGLShaderProgram> p) override;
-    virtual bool scatter(const Ray& r_in, const HitInfo& rec, vec3& color, Ray & r_out) const override;
+    virtual bool scatter(const Ray& r_in, const HitInfo& rec, vec3& color, Ray & r_out) const override = 0;
     virtual vec3 getDiffuse(vec2 point) const override;   //Calcula el factor d'atenuacio de la llum al punt passat per parametre
     virtual void draw() override;
     virtual void read (const QJsonObject &json) override;
@@ -21,16 +21,13 @@ public:
     virtual void print(int indentation) const override;
 
 private:
-    //My atributes (N6) (i si, ha de ser un struct perque ho demanen)
     struct gl_materials{
-       GLuint glKd;
        GLuint glKa;
+       GLuint glKd;
        GLuint glKs;
        GLuint glShiness;
        GLuint glOpacity;
     };
     gl_materials gl_my_materials[5];
-
-
 };
 
