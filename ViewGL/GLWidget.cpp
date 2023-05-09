@@ -14,11 +14,9 @@ GLWidget::GLWidget(const QGLFormat &glf, QWidget *parent) : QGLWidget(glf, paren
     Controller::getInstance()->getSetUp()->setCamera(cameraGPU);
 }
 
-
 GLWidget::~GLWidget() {
 
 }
-
 
 /* Interacció amb GL i inicialització dels programes a la GPU */
 
@@ -38,21 +36,21 @@ void GLWidget::initializeGL() {
 
     // Creacio d'una Light per a poder modificar el seus valors amb la interficie
     // TO DO: Pràctica 2: Fase 1:  Canviar per a que siguin GPULigths i usar la factory GPULightFactory que facis nova
-    //N6 DONE
 
     // Hola! myGPUSetUp i program, son atributs definits en la classe GLWidget.hh, useulos per cridar a tots els metodes de la classe GPUSetUP (N6)
-    this->myGPUSetUp.setAmbientGlobalToGPU(this->program);
+
+    this->myGPUSetUp.setAmbientGlobalToGPU(this->program[pasarShader]);
 
     std::vector<shared_ptr<GPULight>> ligths;
-    //N6 llum puntual
+    //llum puntual
     auto pointLight  = GPULightFactory::getInstance().createLight(LightFactory::POINTLIGHT);
     ligths.push_back(pointLight);
 
-    //N6 llum direccional
+    //llum direccional
     auto directionalLight  = GPULightFactory::getInstance().createLight(LightFactory::DIRECTIONALLIGHT);
     ligths.push_back(directionalLight);
 
-    //N6 llum SpotLight
+    //llum SpotLight
     auto spotLight  = GPULightFactory::getInstance().createLight(LightFactory::SPOTLIGHT);
     ligths.push_back(spotLight);
 
@@ -81,7 +79,7 @@ void GLWidget::paintGL() {
     shared_ptr<GPUCamera> camera = Controller::getInstance()->getSetUp()->getCamera();
     auto scene = Controller::getInstance()->getScene();
 
-    camera->toGPU(program);
+    camera->toGPU(program[pasarShader]);
     scene->draw();
 }
 
@@ -106,10 +104,11 @@ void GLWidget::resizeGL(int width, int height) {
  * @brief GLWidget::initShadersGPU
  */
 void GLWidget::initShadersGPU(){
-    GLShader *glshader = new GLShader("://resources/GPUshaders/vshader1.glsl", "://resources/GPUshaders/fshader1.glsl", program);
-    if (glshader != nullptr) {
-        program->link();
-        program->bind();
+    GLShader *glshader = new GLShader("://resources/GPUshaders/vshader1.glsl", "://resources/GPUshaders/fshader1.glsl", program[0]);
+    GLShader *glshader1 = new GLShader("://resources/GPUshaders/vColorShader.glsl", "://resources/GPUshaders/fColorShader.glsl", program[1]);
+    if (glshader != nullptr && glshader1 != nullptr) {
+        program[pasarShader]->link();
+        program[pasarShader]->bind();
     }
 }
 
@@ -150,14 +149,14 @@ void GLWidget::saveImage(){
 /** Metodes SLOTS que serveixen al builder per a actualitzar l'escena i els objectes */
 void GLWidget::updateObject(shared_ptr<GPUMesh> obj) {
 
-    obj->toGPU(program);
+    obj->toGPU(program[pasarShader]);
     updateGL();
 }
 
 void GLWidget::updateScene() {
     // Control de la nova escena a la GPU
     auto sc = Controller::getInstance()->getScene();
-    sc->toGPU(program);
+    sc->toGPU(program[pasarShader]);
     Controller::getInstance()->setScene(sc);
     // Podeu utilitzar l'altre constructor de Camera per inicialitzar els
     // parametres de la camera.

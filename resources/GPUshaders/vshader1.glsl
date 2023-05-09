@@ -24,7 +24,7 @@ struct Light{
     float cosAngle; // Coseno del ángulo de apertura, en el caso de luz tipo spot
 };
 
-uniform Light myLights[9]; // o 8, xq arrays comencem per 0?
+uniform Light myLights[4]; // 4 represneta el nombre de llums que volem, es arbitraria
 
 out vec4 color;
 
