@@ -23,6 +23,6 @@ void main()
     gl_Position = projection*model_view*vPosition;
     gl_Position = gl_Position/gl_Position.w;
 
-    //color = vec4(myMaterial.Kd, 1.0f);
-    color = vec4(1.0f, 0.0f, 0.0f, 1.0f);
+    color = vec4(myMaterial.Kd, 1.0f);
+    //color = vec4(1.0f, 0.0f, 0.0f, 1.0f);
 }
