@@ -39,6 +39,7 @@ GLMainWindow::GLMainWindow(QWidget *parent) :
     // connect(builder, SIGNAL(settingsChanged()), this, SLOT(refreshWindow()));
 
 
+
     connect(ui->action_save_frame_as_image, SIGNAL(triggered()), glWidget, SLOT(saveImage()));
     connect(ui->action_start_and_save_animation, SIGNAL(triggered()), glWidget, SLOT(saveAnimation()));
     connect(ui->actionAbout, SIGNAL(triggered()), this, SLOT(aboutMenu()));
