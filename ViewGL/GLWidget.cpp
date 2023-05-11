@@ -150,6 +150,7 @@ void GLWidget::saveImage(){
 void GLWidget::updateObject(shared_ptr<GPUMesh> obj) {
 
     obj->toGPU(program[pasarShader]);
+    //llamar a toGPU de GPUObject
     updateGL();
 }
 

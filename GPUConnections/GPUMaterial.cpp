@@ -9,11 +9,11 @@ GPUMaterial::GPUMaterial() {
 
 void GPUMaterial::toGPU(shared_ptr<QGLShaderProgram> p) {
 
-    gl_my_materials[0].glKa = program->uniformLocation(QString("myMaterials[%0].Ia").arg(0));
-    gl_my_materials[1].glKd = program->uniformLocation(QString("myMaterials[%1].Id").arg(1));
-    gl_my_materials[2].glKs = program->uniformLocation(QString("myMaterials[%2].Is").arg(2));
-    gl_my_materials[3].glShiness = program->uniformLocation(QString("myMaterials[%3].pos").arg(3));
-    gl_my_materials[4].glOpacity = program->uniformLocation(QString("myMaterials[%4].dir").arg(4));
+    gl_my_material.glKa = program->uniformLocation("myMaterial.Ka");
+    gl_my_material.glKd = program->uniformLocation("myMaterial.Kd");
+    gl_my_material.glKs = program->uniformLocation("myMaterial.Ks");
+    gl_my_material.glShiness = program->uniformLocation("myMaterial.shiness");
+    gl_my_material.glOpacity = program->uniformLocation("myMaterial.opacity");
 
     vec3 vectorKa(0.1f, 0.1f, 0.1f);
     vec3 vectorKd(1.0f, 0.0f, 0.0f);
@@ -24,11 +24,11 @@ void GPUMaterial::toGPU(shared_ptr<QGLShaderProgram> p) {
 
 
     // Enviar valors a GPU
-    glUniform3fv(gl_my_materials[0].glKa, 1, vectorKa);
-    glUniform3fv(gl_my_materials[1].glKd, 1, vectorKd);
-    glUniform3fv(gl_my_materials[2].glKs, 1, vectorKs);
-    glUniform1f(gl_my_materials[3].glShiness, shiness);
-    glUniform1f(gl_my_materials[4].glOpacity, opacity);
+    glUniform3fv(gl_my_material.glKa, 1, vectorKa);
+    glUniform3fv(gl_my_material.glKd, 1, vectorKd);
+    glUniform3fv(gl_my_material.glKs, 1, vectorKs);
+    glUniform1f(gl_my_material.glShiness, shiness);
+    glUniform1f(gl_my_material.glOpacity, opacity);
 }
 
 vec3 GPUMaterial::getDiffuse(vec2 point) const {

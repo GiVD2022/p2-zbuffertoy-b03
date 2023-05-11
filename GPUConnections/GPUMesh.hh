@@ -7,6 +7,7 @@ using namespace Common;
 
 #include "GPUConnections/GPUConnectable.hh"
 #include "Model/Modelling/Objects/Mesh.hh"
+#include "GPUConnections/GPUMaterial.hh"
 
 static int NUMPOINTS = 10000;
 
@@ -26,6 +27,7 @@ public:
     void read(const QJsonObject &json) override;
 private:
     // Estructures per passar a la GPU
+
     GLuint buffer;
     GLuint vao;
 
@@ -40,6 +42,7 @@ private:
     int Index; // index de control del numero de vèrtexs a passar a la GPU
 
     shared_ptr<QOpenGLTexture> texture;
+    //shared_ptr<GPUMaterial> material;
 
     void make();
 
