@@ -13,8 +13,9 @@ GPUMesh::GPUMesh(const QString &fileName): Mesh(fileName)
 {
     numPoints = NUMPOINTS;
     points = new vec4[numPoints];
-    normals= new vec4[numPoints];
+    normals = new vec4[numPoints];
     colors = new vec4[numPoints];
+    //material = make_share<GPUMaterial>(K, K) ;
     make();
 }
 

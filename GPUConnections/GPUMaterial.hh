@@ -28,6 +28,6 @@ private:
        GLuint glShiness;
        GLuint glOpacity;
     };
-    gl_materials gl_my_materials[5];
+    gl_materials gl_my_material;
 };
 
