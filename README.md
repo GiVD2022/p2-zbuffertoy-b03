@@ -37,9 +37,9 @@ A continuació s'indica quines parts s'han fet i qui les ha implementat
        - [ ] Pas a la GPU
        - [ ] Lectura de fitxers .json
     - Shading
-        - [ ] Color
-        - [ ] Normal
-        - [ ] Depth 
+        - [x] Color: Arturo
+        - [x] Normal: Arturo
+        - [x] Depth: Arturo
         - [ ] Phong-Gouraud 
         - [ ] Phong-Phong
         - [ ] BlinnPhong-Gouraud 
