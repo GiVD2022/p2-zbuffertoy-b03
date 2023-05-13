@@ -3,6 +3,7 @@
 #include "ShadingFactory.hh"
 #include "ColorShading.hh"
 #include "ColorShadow.hh"
+#include "NormalShading.hh"
 
 class ShadingFactory
 {
