@@ -91,7 +91,7 @@ protected:
     void Zoom (int positiu);
     void saveFrame();
 private:
-    int pasarShader = 1; //de momento solo puede ser 0 o 1, ya que solo hay dos parejas de shaders diferentes.
+    int pasarShader = 4; //de momento solo puede ser 0 o 1, ya que solo hay dos parejas de shaders diferentes.
     QTimer *timer;
     unsigned int currentFrame;
     unsigned int currentImage;
@@ -100,7 +100,7 @@ private:
 
     // TO DO: Pràctica 2: Fase 1: Per ara nomes es té un parell vertex-fragment
     // i cal estendre-ho a tenir mé parells
-    shared_ptr<QGLShaderProgram> program[2];
+    shared_ptr<QGLShaderProgram> program[5];
 
     //Creo un objecte del tipus GPUSetUP, per poder utilitzar els metodes en la meva classe
     //Fase1: Pas1

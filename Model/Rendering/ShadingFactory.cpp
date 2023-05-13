@@ -39,7 +39,7 @@ ShadingFactory::SHADING_TYPES ShadingFactory::getIndexType(shared_ptr<ShadingStr
         return SHADING_TYPES::COLOR;
     } else if (dynamic_pointer_cast<ColorShadow>(m) != nullptr) {
         return SHADING_TYPES::COLORSHADOW;
-    } else
+    }else
         return SHADING_TYPES::COLOR;
 }
 
