@@ -13,6 +13,6 @@ class GLShader
 {
 public:
     GLShader(const char* vertexShaderFile, const char* fragmentShaderFile, shared_ptr<QGLShaderProgram> &program);
-    void activateShader();
+    void activateShader(shared_ptr<QGLShaderProgram> p);
     void activateShaderTexture();
 };

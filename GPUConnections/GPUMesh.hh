@@ -8,13 +8,14 @@ using namespace Common;
 #include "GPUConnections/GPUConnectable.hh"
 #include "Model/Modelling/Objects/Mesh.hh"
 #include "GPUConnections/GPUMaterial.hh"
+#include "GPUConnections/GPUObject.hh"
 
 static int NUMPOINTS = 10000;
 
 class GPUMesh : public Mesh, public GPUConnectable, public QObject
 {
 public:
-	GPUMesh();
+    GPUMesh();
     GPUMesh(const QString &fileName);
     GPUMesh(const int npoints, const QString &fileName);
 
@@ -42,11 +43,10 @@ private:
     int Index; // index de control del numero de vèrtexs a passar a la GPU
 
     shared_ptr<QOpenGLTexture> texture;
-    //shared_ptr<GPUMaterial> material;
+    shared_ptr<GPUMaterial> material;
 
     void make();
 
     void setTexture(shared_ptr<QOpenGLTexture> t);
     void initTexture();
 };
-

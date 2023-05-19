@@ -35,9 +35,27 @@ Material::Material(vec3 a, vec3 d, vec3 s, float shin, float opac) {
 }
 
 
-vec3 Material::getDiffuse(vec2 point) const {
+vec3 Material::getDiffuse() const {
     return Kd;
 }
+
+vec3 Material::getAmbient() const {
+    return Ka;
+}
+
+vec3 Material::getSpecular() const {
+    return Ks;
+}
+
+float Material::getShininess() const {
+    return shininess;
+}
+
+float Material::getOpacity() const {
+    return opacity;
+}
+
+
 
 void Material::read (const QJsonObject &json)
 {
