@@ -1,7 +1,9 @@
 #include "DirectionalLight.hh"
 
-DirectionalLight::DirectionalLight(vec3 dir, vec3 Ia, vec3 Id, vec3 Is) :
-    Light(Ia, Id, Is), dir(normalize(dir)) {}
+DirectionalLight::DirectionalLight(vec3 Ia, vec3 Id, vec3 Is, vec3 dir) :
+    Light(Ia, Id, Is, dir){
+
+}
 
 vec3 DirectionalLight::getDir() {
     return dir;

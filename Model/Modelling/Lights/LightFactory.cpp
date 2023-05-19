@@ -24,17 +24,17 @@ shared_ptr<Light> LightFactory::createLight(LIGHT_TYPES t) {
     }
     return l;
 }
-shared_ptr<Light> LightFactory::createLight(vec3 posicio, vec3 dir, vec3 Ia, vec3 Id, vec3 Is, float a, float b, float c, float angle,  LIGHT_TYPES t) {
+shared_ptr<Light> LightFactory::createLight(vec3 Ia, vec3 Id, vec3 Is, vec3 abc, vec4 posicio, vec3 dir, float angle, LIGHT_TYPES t) {
     shared_ptr<Light> l;
     switch(t) {
     case POINTLIGHT:
-        l = make_shared<PointLight>(posicio, Ia, Id, Is, a, b, c);
+        l = make_shared<PointLight>(Ia, Id, Is, abc, posicio);
         break;
     case DIRECTIONALLIGHT:
-        l = make_shared<DirectionalLight>(dir, Ia, Id, Is);
+        l = make_shared<DirectionalLight>(Ia, Id, Is, dir);
         break;
     case SPOTLIGHT:
-        l = make_shared<SpotLight>(posicio, dir, Ia, Id, Is, a, b, c, angle);
+        l = make_shared<SpotLight>(Ia, Id, Is, abc, posicio, dir, angle);
         break;
     default:
         break;

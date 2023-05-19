@@ -20,6 +20,9 @@ protected:
     float cosAngle;
 
 
+    int index;
+
+
 public:
     /*
      * Constructor de la classe Light.
@@ -28,6 +31,10 @@ public:
      * param Is: component especular de la llum.
      * */
     Light(vec3 Ia, vec3 Id, vec3 Is);
+    Light(vec3 Ia, vec3 Id, vec3 Is, vec3 dir); //dir light
+    Light(vec3 Ia, vec3 Id, vec3 Is, vec3 abc, vec4 pos); //point light
+    Light(vec3 Ia, vec3 Id, vec3 Is, vec3 abc, vec4 pos, vec3 dir, float cosAngle); // spot light
+
     Light();
     vec3 getIa();
     vec3 getId();
@@ -64,6 +71,9 @@ public:
 
     float getCosAngle();
     void setCosAngle(float cos);
+
+    int getIndex();
+    void setIndex(int i);
 
 };
 

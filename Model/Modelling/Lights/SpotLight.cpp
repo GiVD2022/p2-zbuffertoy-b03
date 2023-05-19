@@ -1,7 +1,7 @@
 #include "SpotLight.hh"
 
-SpotLight::SpotLight(vec3 pos, vec3 dir, vec3 Ia, vec3 Id, vec3 Is, float a, float b, float c, float angle) :
-    Light(Ia, Id, Is), pos(pos), dir(normalize(dir)), a(a), b(b), c(c), cosAngle(cosf(angle / 2))
+SpotLight::SpotLight(vec3 Ia, vec3 Id, vec3 Is, vec3 abc, vec4 pos, vec3 dir, float cosAngle) :
+    Light(Ia, Id, Is, abc, pos, dir, cosAngle)
 {
 
 }

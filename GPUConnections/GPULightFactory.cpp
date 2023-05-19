@@ -23,19 +23,19 @@ shared_ptr<GPULight> GPULightFactory::createLight( LightFactory::LIGHT_TYPES t) 
     }
     return l;
 }
-shared_ptr<GPULight> GPULightFactory::createLight(vec3 posicio, vec3 dir, vec3 Ia, vec3 Id, vec3 Is, float a, float b, float c, float angle, LightFactory::LIGHT_TYPES t) {
+shared_ptr<GPULight> GPULightFactory::createLight(vec3 Ia, vec3 Id, vec3 Is, vec3 abc, vec4 posicio, vec3 dir, float angle, LightFactory::LIGHT_TYPES t) {
     shared_ptr<GPULight> l;
     switch(t) {
     case LightFactory::LIGHT_TYPES::POINTLIGHT:
-        l = make_shared<GPUPointLight>(posicio, Ia, Id, Is, a, b, c);
+        l = make_shared<GPUPointLight>(Ia, Id, Is, abc, posicio);
         break;
 
     case LightFactory::LIGHT_TYPES::DIRECTIONALLIGHT:
-        l = make_shared<GPUDirectionalLight>(dir, Ia, Id, Is);
+        l = make_shared<GPUDirectionalLight>(Ia, Id, Is, dir);
         break;
 
     case LightFactory::LIGHT_TYPES::SPOTLIGHT:
-        l = make_shared<GPUSpotLight>(posicio,dir, Ia, Id, Is, a, b, c, angle);
+        l = make_shared<GPUSpotLight>(Ia, Id, Is, abc, posicio, dir, angle);
         break;
 
     default:
