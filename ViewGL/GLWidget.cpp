@@ -104,13 +104,12 @@ void GLWidget::resizeGL(int width, int height) {
  * @brief GLWidget::initShadersGPU
  */
 void GLWidget::initShadersGPU(){
-    GLShader *glshader = new GLShader("://resources/GPUshaders/vshader1.glsl", "://resources/GPUshaders/fshader1.glsl", program[0]);
     GLShader *glshader1 = new GLShader("://resources/GPUshaders/vColorShader.glsl", "://resources/GPUshaders/fColorShader.glsl", program[1]);
     GLShader *glshader2 = new GLShader("://resources/GPUshaders/vDepthShader.glsl", "://resources/GPUshaders/fDepthShader.glsl", program[2]);
     GLShader *glshader3 = new GLShader("://resources/GPUshaders/vNormalShader.glsl", "://resources/GPUshaders/fNormalShader.glsl", program[3]);
     GLShader *glshader4 = new GLShader("://resources/GPUshaders/vGouraudShader.glsl", "://resources/GPUshaders/fGouraudShader.glsl", program[4]);
 
-    if (glshader != nullptr && glshader1 != nullptr && glshader2 != nullptr && glshader3 != nullptr && glshader4 != nullptr) {
+    if(glshader1 != nullptr && glshader2 != nullptr && glshader3 != nullptr && glshader4 != nullptr){
         program[pasarShader]->link();
         program[pasarShader]->bind();
     }
@@ -193,6 +192,7 @@ void GLWidget::activaColorShader() {
     //TO DO: Pràctica 2: A implementar a la fase 1
     this->pasarShader = 1;
     if(program[pasarShader] != nullptr){
+        program[pasarShader]->link();
         program[pasarShader]->bind();
         updateScene();
     }
@@ -201,9 +201,9 @@ void GLWidget::activaColorShader() {
 
 void GLWidget::activaDepthShader() {
     //TO DO: Pràctica 2: A implementar a la fase 1
-    qDebug()<<"Estic a Depth Shader";
     this->pasarShader = 2;
     if(program[pasarShader] != nullptr){
+        program[pasarShader]->link();
         program[pasarShader]->bind();
         updateScene();
     }
@@ -214,6 +214,7 @@ void GLWidget::activaNormalShader() {
     //TO DO: Pràctica 2: A implementar a la fase 1
     this->pasarShader = 3;
     if(program[pasarShader] != nullptr){
+        program[pasarShader]->link();
         program[pasarShader]->bind();
         updateScene();
     }
@@ -224,6 +225,7 @@ void GLWidget::activaGouraudShader() {
     //TO DO: Pràctica 2:  implementar a la fase 1
     this->pasarShader = 4;
     if(program[pasarShader] != nullptr){
+        program[pasarShader]->link();
         program[pasarShader]->bind();
         updateScene();
     }

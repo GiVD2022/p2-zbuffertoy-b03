@@ -18,7 +18,6 @@ SOURCES += \
     GPUConnections/GPULightFactory.cpp \
     GPUConnections/GPUMaterial.cpp \
     GPUConnections/GPUMesh.cpp \
-    GPUConnections/GPUObject.cpp \
     GPUConnections/GPUObjectFactory.cpp \
     GPUConnections/GPUPointLight.cpp \
     GPUConnections/GPUScene.cpp \
@@ -68,7 +67,6 @@ HEADERS += \
     GPUConnections/GPULightFactory.hh \
     GPUConnections/GPUMaterial.hh \
     GPUConnections/GPUMesh.hh \
-    GPUConnections/GPUObject.hh \
     GPUConnections/GPUObjectFactory.hh \
     GPUConnections/GPUPointLight.hh \
     GPUConnections/GPUScene.hh \

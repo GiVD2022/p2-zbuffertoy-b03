@@ -26,6 +26,17 @@ struct Light{
 
 uniform Light myLights[4]; // 4 represneta el nombre de llums que volem, es arbitraria
 
+
+struct Material{
+    vec3 Ka; //Intensitat ambiental
+    vec3 Kd; // Intensitat difusa
+    vec3 Ks; // Intensitat especular
+    float shiness; // Posició (en el cas de llum puntual)
+    float opacity; // Direcció (en el cas de llum direccional o llum tipo spot)
+
+};
+uniform Material myMaterial;
+
 out vec4 color;
 
 void main()

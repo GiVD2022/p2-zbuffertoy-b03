@@ -2,11 +2,21 @@
 
 GPUMesh::GPUMesh()
 {
-	numPoints = NUMPOINTS;
-	points = new vec4[numPoints];
-	normals= new vec4[numPoints];
-	colors = new vec4[numPoints];
-	make();
+    numPoints = NUMPOINTS;
+    points = new vec4[numPoints];
+    normals= new vec4[numPoints];
+    colors = new vec4[numPoints];
+
+    //inicialitzem dates N6
+    vec3 ambient(0.1f,  0.02f, 0.02f);
+    vec3  diffuse(1.0f, 0.2f, 0.2f);
+    vec3 specular(1.0f, 1.0f, 1.0f);
+    float shininess = 20.0f;
+    float opacity = 2.0f;
+
+    material = make_shared<GPUMaterial>(ambient, diffuse, specular, shininess, opacity);
+
+    make();
 }
 
 GPUMesh::GPUMesh(const QString &fileName): Mesh(fileName)
@@ -15,7 +25,16 @@ GPUMesh::GPUMesh(const QString &fileName): Mesh(fileName)
     points = new vec4[numPoints];
     normals = new vec4[numPoints];
     colors = new vec4[numPoints];
-    //material = make_share<GPUMaterial>(K, K) ;
+
+    vec3 ambient(0.1f,  0.02f, 0.02f);
+    vec3  diffuse(1.0f, 0.2f, 0.2f);
+    vec3 specular(1.0f, 1.0f, 1.0f);
+    vec3 transparency(0.0f, 0.0f, 0.0f);
+    float shininess = 20.0f;
+    float opacity = 2.0f;
+
+    material = make_shared<GPUMaterial>(ambient, diffuse, specular, shininess, opacity);
+
     make();
 }
 
@@ -25,6 +44,15 @@ GPUMesh::GPUMesh(const int npoints, const QString &fileName): Mesh(fileName)
     points = new vec4[numPoints];
     normals= new vec4[numPoints];
     colors = new vec4[numPoints];
+
+    vec3 ambient(0.1f,  0.02f, 0.02f);
+    vec3  diffuse(1.0f, 0.2f, 0.2f);
+    vec3 specular(1.0f, 1.0f, 1.0f);
+    vec3 transparency(0.0f, 0.0f, 0.0f);
+    float shininess = 20.0f;
+    float opacity = 2.0f;
+
+    material = make_shared<GPUMaterial>(ambient, diffuse, specular, shininess, opacity);
     make();
 }
 
@@ -33,6 +61,15 @@ void GPUMesh::read(const QJsonObject &json) {
     points = new vec4[numPoints];
     normals= new vec4[numPoints];
     colors = new vec4[numPoints];
+
+    vec3 ambient(0.1f,  0.02f, 0.02f);
+    vec3  diffuse(1.0f, 0.2f, 0.2f);
+    vec3 specular(1.0f, 1.0f, 1.0f);
+    vec3 transparency(0.0f, 0.0f, 0.0f);
+    float shininess = 20.0f;
+    float opacity = 2.0f;
+
+    material = make_shared<GPUMaterial>(ambient, diffuse, specular, shininess, opacity);
     Mesh::read(json);
     make();
 }
@@ -87,6 +124,8 @@ void GPUMesh::toGPU(shared_ptr<QGLShaderProgram> pr) {
 
     glVertexAttribPointer(2, 4, GL_FLOAT, GL_FALSE, 0,  (void*)(sizeof(vec4)*Index*2));
     glEnableVertexAttribArray(2);
+
+
 }
 
 
@@ -100,6 +139,9 @@ void GPUMesh::draw(){
     // Activació a GL del Vertex Buffer Object.
     // TO  DO: A modificar a la fase 1 de la practica 2
     // Cal activar també les normals  a la GPU
+
+
+    this->material->toGPU(program);
 
     glBindVertexArray( vao );
     glEnableVertexAttribArray(0);
@@ -138,7 +180,7 @@ void GPUMesh::make(){
             normals[Index] = normalsVertexs[cares[i].idxNormals[j]];
             Index++;
         }
-	}
+    }
 }
 
 
@@ -167,7 +209,7 @@ Capsa3D GPUMesh::calculCapsa3D()
     pmin.y = points[0].y;
     pmin.z = points[0].z;
     pmax = pmin;
-	for(i=1; i<Index; i++) {
+    for(i=1; i<Index; i++) {
         if(points[i].x <pmin[0])
             pmin[0] = points[i].x;
         if(points[i].y <pmin[1])

@@ -91,7 +91,7 @@ protected:
     void Zoom (int positiu);
     void saveFrame();
 private:
-    int pasarShader = 4; //de momento solo puede ser 0 o 1, ya que solo hay dos parejas de shaders diferentes.
+    int pasarShader = 1; //de momento solo puede ser 0 o 1, ya que solo hay dos parejas de shaders diferentes.
     QTimer *timer;
     unsigned int currentFrame;
     unsigned int currentImage;
