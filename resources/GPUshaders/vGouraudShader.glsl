@@ -14,22 +14,21 @@ struct Light{
     vec3 Ia; //Intensitat ambiental
     vec3 Id; // Intensitat difusa
     vec3 Is; // Intensitat especular
-    vec3 pos; // Posició (en el cas de llum puntual)
+    vec4 pos; // Posició (en el cas de llum puntual)
     vec3 dir; // Direcció (en el cas de llum direccional o llum tipo spot)
     // Coeficients d'atenuació
-    float a;
-    float b;
-    float c;
+    vec3 abc;
     float cosAngle; // Coseno del ángulo de apertura, en el caso de luz tipo spot
 };
 
 uniform Light myLights[4]; // 4 represneta el nombre de llums que volem, es arbitraria
+
 struct Material{
-    vec3 Ka; //Intensitat ambiental
-    vec3 Kd; // Intensitat difusa
-    vec3 Ks; // Intensitat especular
-    float shiness; // Posició (en el cas de llum puntual)
-    float opacity; // Direcció (en el cas de llum direccional o llum tipo spot)
+    vec3 Ka; //coeficient ambiental
+    vec3 Kd; // coeficient difusa
+    vec3 Ks; // coeficient especular
+    float shiness; // brillo
+    float opacity; // opacity si o no
 
 };
 
@@ -64,8 +63,8 @@ void main(void)
             // Calculate the distance from the vertex to the light position
             float distance = length(myLights[i].pos - position.xyz);
 
-            // Calculate the attenuation factor
-            attenuation = 1.0 / (myLights[i].a + myLights[i].b * distance + myLights[i].c * distance * distance);
+            // Calcular attenuacio, lo he cambiado a un solo vector asi que hay que cambair esta linea N6
+            //attenuation = 1.0 / (myLights[i].a + myLights[i].b * distance + myLights[i].c * distance * distance);
         } else {
             // Use the light direction if it's a directional light or spot light
             lightDir = normalize(myLights[i].dir);
