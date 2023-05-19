@@ -90,14 +90,39 @@ void GPUSetUp::setAmbientGlobalToGPU(shared_ptr<QGLShaderProgram> program){
  * @param program
  */
 
+
+/*
+for (int i = 0; i < lights.size(); i++)
+    this->my_lights->get_gl_my_lights(i).glIa = program->uniformLocation(QString("myLights[%1].Ia").arg(i));
+}
+
+*/
+
+
+//Falta arreglar aquest métode
 void GPUSetUp::lightsToGPU(shared_ptr<QGLShaderProgram> program){
     // Practica 2: TO DO: A implementar a la fase 1
+
+    // TODO Pràctica 2: FASE 1: Afegir llums a l'escena
+    //Done N6, al ser una classe abstracta uso un punter
+    //shared_ptr<GPULight> my_lights[lights.size()];
+
     //N6 DONE
-    for (shared_ptr<GPULight> light : lights) {
+
+    for (shared_ptr<GPULight> light : lights ) {
         // Actualizamos los parámetros de la luz en el shader
+
         light->toGPU(program);
     }
+
+    /*
+    for(int i = 0; i < lights.size(); i++){
+
+        this->my_lights[i]->get_gl_my_lights().glIa = program->uniformLocation(QString("myLights[%1].Ia").arg(i));
+    }
+    */
 }
+
 
 // TODO (opcional) si es llegeix el setUp de fitxer cal alctualitzar aquest codi per
 // a crear les llums de tipus GPU

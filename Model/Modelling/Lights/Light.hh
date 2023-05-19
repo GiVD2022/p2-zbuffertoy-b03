@@ -14,6 +14,11 @@ protected:
     vec3 Ia;
     vec3 Id;
     vec3 Is;
+    vec3 abc;
+    vec4 pos;
+    vec3 dir;
+    float cosAngle;
+
 
 public:
     /*
@@ -54,6 +59,11 @@ public:
     vec3 getCoeficients() const;
     void setCoeficients(const vec3 &value);
 
+    vec3 getDirLight();
+    void setDirLight(vec3 v);
+
+    float getCosAngle();
+    void setCosAngle(float cos);
 
 };
 
