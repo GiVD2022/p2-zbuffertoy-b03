@@ -4,6 +4,20 @@
 #include "Model/Modelling/Lights/SpotLight.hh"
 
 class GPUSpotLight : public GPULight, public SpotLight {
+
+private:
+    struct gl_spotLight{
+       GLuint glIa;
+       GLuint glId;
+       GLuint glIs;
+       GLuint glABC;
+       GLuint glPos;
+       GLuint glDir;
+       GLuint glCosAngle;
+    };
+
+    gl_spotLight gl_my_spotLights[7];
+
 public:
     GPUSpotLight() {}
     /*
@@ -18,13 +32,14 @@ public:
      * param c: coeficient c de l'atenuacio.
      * param angle: angle d'obertura de la llum.
      * */
-    GPUSpotLight(vec3 pos, vec3 dir, vec3 Ia, vec3 Id, vec3 Is, float a, float b, float c, float angle);
+    GPUSpotLight(vec3 Ia, vec3 Id, vec3 Is, vec3 abc, vec4 pos, vec3 dir, float angle);
     virtual ~GPUSpotLight() {}
 
     virtual void toGPU(shared_ptr<QGLShaderProgram> p) override;
     virtual vec3 vectorL(vec3 point) override;
     virtual float attenuation(vec3 point) override;
     virtual float distanceToLight(vec3 point) override;
+
 
 };
 

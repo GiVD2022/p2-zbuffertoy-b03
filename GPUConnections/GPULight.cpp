@@ -7,6 +7,7 @@ GPULight::GPULight(vec3 Ia, vec3 Id, vec3 Is): Light(Ia, Id, Is){
 GPULight::GPULight() {
 }
 
+/*
 void GPULight::toGPU(shared_ptr<QGLShaderProgram> p) {
     // TO DO Pràctica 2: Fase 1: enviar les propietats de Ia, Id i Is a la GPU
 
@@ -48,7 +49,7 @@ void GPULight::toGPU(shared_ptr<QGLShaderProgram> p) {
 
     */
 
-
+/*
     // Enviar valors a GPU
     glUniform3fv(gl_my_lights.glIa, 1, this->getIa());
     glUniform3fv(gl_my_lights.glId, 1, this->getId());
@@ -65,4 +66,5 @@ void GPULight::toGPU(shared_ptr<QGLShaderProgram> p) {
 
 }
 
+*/
 

@@ -7,8 +7,9 @@ using namespace std;
 
 class GPULight: public Light, public GPUConnectable {
 
-private:
+public:
     //My atributes (N6) (i si, ha de ser un struct perque ho demanen)
+    /*
     struct gl_lights{
        GLuint glIa;
        GLuint glId;
@@ -20,7 +21,10 @@ private:
 
     };
 
-    gl_lights gl_my_lights;
+    gl_lights gl_my_lights[7];
+    */
+
+
 
 public:
     /*
@@ -40,13 +44,13 @@ public:
     //Calcula la distancia del punt a la llum
     virtual float distanceToLight(vec3 point) override = 0;
 
-    virtual void toGPU(shared_ptr<QGLShaderProgram> p) override;
+    virtual void toGPU(shared_ptr<QGLShaderProgram> p) override = 0;
 
+    /*
     //Aquest getter em retorna la struct que conté les dades de les meves llums
-    gl_lights get_gl_my_lights(){
-        return this->gl_my_lights;
-    }
-
+    struct gl_lights get_gl_my_lights(size_t idx){
+        return this->gl_my_lights[idx];
+    }*/
 };
 
 

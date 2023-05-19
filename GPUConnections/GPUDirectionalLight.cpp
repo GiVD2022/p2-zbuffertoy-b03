@@ -1,13 +1,33 @@
 #include "GPUDirectionalLight.hh"
 
-GPUDirectionalLight::GPUDirectionalLight(vec3 dir, vec3 Ia, vec3 Id, vec3 Is) :
-    DirectionalLight(dir, Ia, Id, Is)
+GPUDirectionalLight::GPUDirectionalLight(vec3 Ia, vec3 Id, vec3 Is, vec3 dir) :
+    DirectionalLight(Ia, Id, Is, dir)
 {
 
 }
 
 void GPUDirectionalLight::toGPU(shared_ptr<QGLShaderProgram> p) {
-    GPULight::toGPU(p); // Crida al mètode toGPU() de la classe base
+    qDebug() << "DirLights toGPU.....";
+    program = p;
+    int index;
+
+    index = DirectionalLight::getIndex();
+
+    // Obtenir ubis de les variables del Shader
+    gl_my_dirLights[index].glIa = program->uniformLocation("myDirLights.Ia");
+    gl_my_dirLights[index].glId = program->uniformLocation("myDirLights.Id");
+    gl_my_dirLights[index].glIs = program->uniformLocation("myDirLights.Is");
+    gl_my_dirLights[index].glDir = program->uniformLocation("myDirLights.dir");
+
+    qDebug() << "DirLights toGPU2.....";
+
+    // Enviar valors a GPU
+    glUniform3fv(gl_my_dirLights[index].glIa, 1, this->DirectionalLight::getIa());
+    glUniform3fv(gl_my_dirLights[index].glId, 1, this->DirectionalLight::getId());
+    glUniform3fv(gl_my_dirLights[index].glIs, 1, this->DirectionalLight::getIs());
+    glUniform3fv(gl_my_dirLights[index].glDir, 1, this->DirectionalLight::getDirLight());
+
+    qDebug() << "Light toGPU3.....";
 }
 
 // La direcció de la llum no influeix en el vector L

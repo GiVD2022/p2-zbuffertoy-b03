@@ -1,9 +1,35 @@
 #include "Light.hh"
 
-Light::Light(vec3 Ia, vec3 Id, vec3 Is) {
+Light::Light(vec3 Ia, vec3 Id, vec3 Is){
     this->Ia = Ia;
     this->Id = Id;
     this->Is = Is;
+}
+
+Light::Light(vec3 Ia, vec3 Id, vec3 Is, vec3 dir) {
+    this->Ia = Ia;
+    this->Id = Id;
+    this->Is = Is;
+    this->dir = dir;
+}
+
+Light::Light(vec3 Ia, vec3 Id, vec3 Is, vec3 abc, vec4 pos){
+    this->Ia = Ia;
+    this->Id = Id;
+    this->Is = Is;
+    this->abc = abc;
+    this->pos = pos;
+
+}
+
+Light::Light(vec3 Ia, vec3 Id, vec3 Is, vec3 abc, vec4 pos, vec3 dir, float cosAngle){
+    this->Ia = Ia;
+    this->Id = Id;
+    this->Is = Is;
+    this->abc = abc;
+    this->pos = pos;
+    this->dir = dir;
+    this->cosAngle = cosAngle;
 }
 
 Light::Light() {
@@ -109,6 +135,14 @@ float Light::getCosAngle(){
 
 void Light::setCosAngle(float cos){
     this->cosAngle = cos;
+}
+
+int Light::getIndex(){
+    return this->index;
+}
+
+void Light::setIndex(int i){
+    this->index = i;
 }
 
 

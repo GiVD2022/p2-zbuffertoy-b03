@@ -11,7 +11,7 @@ public:
     // - Ia: componente ambiental de la luz.
     // - Id: componente difusa de la luz.
     // - Is: componente especular de la luz.
-    DirectionalLight(vec3 dir, vec3 Ia, vec3 Id, vec3 Is);
+    DirectionalLight(vec3 Ia, vec3 Id, vec3 Is, vec3 dir);
     virtual ~DirectionalLight() {}
     vec3 getDir();
     virtual vec3 vectorL(vec3 point) override;

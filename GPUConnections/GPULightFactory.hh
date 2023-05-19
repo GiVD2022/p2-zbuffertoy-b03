@@ -19,6 +19,6 @@ private:
 public:  
 
     shared_ptr<GPULight> createLight( LightFactory::LIGHT_TYPES t);
-    shared_ptr<GPULight> createLight(vec3 posicio, vec3 dir, vec3 Ia, vec3 Id, vec3 Is, float a, float b, float c, float angle,  LightFactory::LIGHT_TYPES t);
+    shared_ptr<GPULight> createLight(vec3 Ia, vec3 Id, vec3 Is, vec3 abc, vec4 posicio, vec3 dir, float angle,  LightFactory::LIGHT_TYPES t);
 
 };
