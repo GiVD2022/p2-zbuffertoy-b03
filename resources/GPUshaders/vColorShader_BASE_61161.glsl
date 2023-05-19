@@ -13,18 +13,16 @@ struct Material{
     float opacity; // Direcció (en el cas de llum direccional o llum tipo spot)
 
 };
+
 uniform Material myMaterial;
 
 out vec4 color;
 
 void main()
 {
-
     gl_Position = projection*model_view*vPosition;
     gl_Position = gl_Position/gl_Position.w;
 
-    //color = vec4(myMaterial.Ka, 1.0f);
-    color = vec4(myMaterial.Kd, 1.0f);
-    //color = vec4(myMaterial.Ks, 1.0f);
-
+    //color = vec4(myMaterial.Kd, 1.0f);
+    color = vec4(1.0f, 0.0f, 0.0f, 1.0f);
 }

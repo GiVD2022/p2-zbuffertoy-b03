@@ -13,18 +13,35 @@ struct Material{
     float opacity; // Direcció (en el cas de llum direccional o llum tipo spot)
 
 };
+
 uniform Material myMaterial;
 
 out vec4 color;
 
+
+void setMaterial()
+{
+    // Intensidad ambiental
+    myMaterial.Ka = vec3(0.1f, 0.02f, 0.02f);
+
+    // Intensidad difusa
+    myMaterial.Kd = vec3(1.0f, 0.2f, 0.2f);
+
+    // Intensidad especular
+    myMaterial.Ks = vec3(1.0f, 1.0f, 1.0f);
+
+    // Brillo
+    myMaterial.shiness = 20.0f;
+
+    // Opacidad
+    myMaterial.opacity = 2.0f;
+}
+
 void main()
 {
+    setMaterial();
 
     gl_Position = projection*model_view*vPosition;
-    gl_Position = gl_Position/gl_Position.w;
-
-    //color = vec4(myMaterial.Ka, 1.0f);
-    color = vec4(myMaterial.Kd, 1.0f);
-    //color = vec4(myMaterial.Ks, 1.0f);
+    color = vec4(myMaterial.Ka, 1.0f);
 
 }

@@ -32,14 +32,13 @@ A continuació s'indica quines parts s'han fet i qui les ha implementat
         - [x] Direccional [Nil] 
         - [x] Spotlight [Nil] 
         - [x] Conexió GPU  + vshader1.glsl implementation [Nil]
-        - [ ] Testeig [Nil] -> Almost there
     - Materials: 
-       - [ ] Pas a la GPU
-       - [ ] Lectura de fitxers .json
+       - [x] Pas a la GPU [Nil + Arturo]
+       - [x] Lectura de fitxers .json: [Arturo]
     - Shading
-        - [x] Color: Arturo
-        - [x] Normal: Arturo
-        - [x] Depth: Arturo
+        - [x] Color: [Arturo]
+        - [x] Normal: [Arturo]
+        - [x] Depth: [Arturo]
         - [ ] Phong-Gouraud 
         - [ ] Phong-Phong
         - [ ] BlinnPhong-Gouraud 

@@ -13,8 +13,9 @@ GLShader::GLShader(const char* vShaderFile, const char* fShaderFile, shared_ptr<
 }
 
 //Metode per activar un shader
-void GLShader::activateShader(){
-
+void GLShader::activateShader(shared_ptr<QGLShaderProgram> p){
+    p->link();
+    p->bind();
 
 ;}
 
