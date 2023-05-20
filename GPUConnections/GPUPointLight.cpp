@@ -1,14 +1,45 @@
 #include "GPUConnections/GPUPointLight.hh"
 
-GPUPointLight::GPUPointLight(vec3 posicio, vec3 Ia, vec3 Id, vec3 Is, float a, float b, float c): PointLight(posicio, Ia, Id, Is, a, b, c) {
+GPUPointLight::GPUPointLight(vec3 Ia, vec3 Id, vec3 Is, vec3 abc, vec4 pos): PointLight(Ia, Id, Is, abc, pos) {
+
+}
+
+GPUPointLight::GPUPointLight() {
+    PointLight::Ia = vec3(0.2);
+    PointLight::Id = vec3 (0.8);
+    PointLight::Is = vec3(1);
+    PointLight::abc = vec3(0.5,0,0.01);
+    PointLight::pos = vec3 (10,10,20);
 }
 
 void GPUPointLight::toGPU(shared_ptr<QGLShaderProgram> p) {
-    // TO DO Pràctica 2: Fase 1: enviar les llums a la GPU
-    //N6, com ja agafem posició i direcció, cridar al toGPU de GPUlight es suficient
-    GPULight::toGPU(p); // Crida al mètode toGPU() de la classe base
-}
+    qDebug() << "PointLights toGPU.....";
+    program = p;
+    int index;
 
+    //index = PointLight::getIndex(); //no funciona el index ns xq me raya
+    index = 0;
+
+    // Obtenir ubis de les variables del Shader
+    gl_my_pointLights[index].glIa = program->uniformLocation(QString("myPointLights[%1].Ia").arg(index));
+    gl_my_pointLights[index].glId = program->uniformLocation(QString("myPointLights[%1].Id").arg(index));
+    gl_my_pointLights[index].glIs = program->uniformLocation(QString("myPointLights[%1].Is").arg(index));
+    gl_my_pointLights[index].glABC = program->uniformLocation(QString("myPointLights[%1].abc").arg(index));
+    gl_my_pointLights[index].glPos = program->uniformLocation(QString("myPointLights[%1].pos").arg(index));
+
+    qDebug() << "PointLights toGPU2.....";
+    QTextStream(stdout) << "\n\n\n\n" << PointLight::getIa() << "\n\n\n\n";
+
+    // Enviar valors a GPU
+    glUniform3fv(gl_my_pointLights[index].glIa, 1, this->PointLight::getIa());
+    glUniform3fv(gl_my_pointLights[index].glId, 1, this->PointLight::getId());
+    glUniform3fv(gl_my_pointLights[index].glIs, 1, this->PointLight::getIs());
+    glUniform3fv(gl_my_pointLights[index].glABC, 1, this->PointLight::getCoeficients());
+    glUniform4fv(gl_my_pointLights[index].glPos, 1, this->PointLight::getLightPosition());
+
+
+    qDebug() << "PointLights toGPU3.....";
+}
 
 vec3 GPUPointLight::vectorL(vec3 point) {
     return PointLight::vectorL(point);

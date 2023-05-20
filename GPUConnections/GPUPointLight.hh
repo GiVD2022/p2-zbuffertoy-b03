@@ -5,7 +5,7 @@
 
 class GPUPointLight: public GPULight, public PointLight {
 public:
-    GPUPointLight() {};
+    GPUPointLight();
     /*
      * Constructor de la classe PointLight.
      * param posicio: posició de la llum.
@@ -16,7 +16,7 @@ public:
      * param b: coeficient b de l'atenuacio.
      * param c: coeficient c de l'atenuacio.
      * */
-    GPUPointLight(vec3 posicio, vec3 Ia, vec3 Id, vec3 Is, float a, float b, float c);
+    GPUPointLight(vec3 Ia, vec3 Id, vec3 Is, vec3 abc, vec4 pos);
     virtual ~GPUPointLight() {}
 
     virtual void toGPU(shared_ptr<QGLShaderProgram> p) override;
@@ -24,5 +24,17 @@ public:
     virtual vec3 vectorL(vec3 point) override;
     virtual float attenuation(vec3 point) override;
     virtual float distanceToLight(vec3 point) override;
+private:
+
+    struct gl_pointLight{
+       GLuint glIa;
+       GLuint glId;
+       GLuint glIs;
+       GLuint glABC;
+       GLuint glPos;
+
+    };
+
+    gl_pointLight gl_my_pointLights[5];
 };
 

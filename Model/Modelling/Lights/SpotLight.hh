@@ -5,7 +5,7 @@
 
 class SpotLight : public Light {
 public:
-    SpotLight() {};
+    SpotLight();
     // Parámetros:
     // - pos: posición de la luz.
     // - dir: dirección a la que apunta la luz.
@@ -16,7 +16,8 @@ public:
     // - b: coeficiente de atenuación lineal.
     // - c: coeficiente de atenuación cuadrático.
     // - angle: ángulo de apertura (en radianes) del cono de luz.
-    SpotLight(vec3 pos, vec3 dir, vec3 Ia, vec3 Id, vec3 Is, float a, float b, float c, float angle);
+    SpotLight(vec3 Ia, vec3 Id, vec3 Is, vec3 abc, vec4 pos, vec3 dir, float cosAngle);
+
     virtual ~SpotLight() {}
     vec3 getPos();
     vec3 getDir();

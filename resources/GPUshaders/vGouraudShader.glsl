@@ -8,8 +8,7 @@ uniform mat4 model_view;
 uniform mat4 projection;
 uniform vec3 glAmbientLight;
 
-// Creació de les diferents llums, en el fitxer glsl tal com va fer per vShader (N6) -> Usats per GpuLight (ho fem struct perque ho demanen així)
-//N6
+
 struct Light{
     vec3 Ia; //Intensitat ambiental
     vec3 Id; // Intensitat difusa

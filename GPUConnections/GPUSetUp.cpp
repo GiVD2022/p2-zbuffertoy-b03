@@ -68,11 +68,15 @@ void GPUSetUp::addLight(shared_ptr<GPULight> l) {
 // Aquest es el metode que envia les llums a la GPU (N6)
 void GPUSetUp::setAmbientGlobalToGPU(shared_ptr<QGLShaderProgram> program){
     // Pràctica 2: Fase 1 lights
-    vec3 vector3D(0.2f, 0.2f, 0.2f); // Valors llum ammbiental (vector de floats) (N6)
+    //vec3 vector3D(0.2f, 0.2f, 0.2f); // Valors llum ammbiental (vector de floats) (N6)
     // Obtenim ubi memoria GPU per la variable uniforme glAmbientLight (N6)
-    this->aL =  program->uniformLocation("glAmbientLight");
+    //this->aL =  program->uniformLocation("glAmbientLight");
     // Enviem valors ddel vector 3D a la GPU (N6)
-    glUniform3fv(aL, 1, vector3D);
+    //glUniform3fv(aL, 1, vector3D);
+    vec3 global = vec3(0.1);
+    GLuint gl_globalLight = program->uniformLocation("glAmbientLight");
+    glUniform3fv(gl_globalLight, 1, global);
+
 }
 
 
@@ -90,14 +94,21 @@ void GPUSetUp::setAmbientGlobalToGPU(shared_ptr<QGLShaderProgram> program){
  * @param program
  */
 
+
+
+
+//Aquest métode pasa les llums a la GPU
 void GPUSetUp::lightsToGPU(shared_ptr<QGLShaderProgram> program){
-    // Practica 2: TO DO: A implementar a la fase 1
-    //N6 DONE
-    for (shared_ptr<GPULight> light : lights) {
-        // Actualizamos los parámetros de la luz en el shader
-        light->toGPU(program);
+    //Primer assignem el index, ja que el necessitem per buscar la ubicació del uniforme (preparem al vector)
+    for(size_t i=0; i < lights.size(); i++){
+        lights[i]->setIndex(static_cast<int>(i));
+    }
+    //Aleshores amb aquest for, ja cridem al toGPu respectiu depenent dels parametres que li ent
+    for(size_t i=0; i < lights.size(); i++){
+        lights[i]->toGPU(program);
     }
 }
+
 
 // TODO (opcional) si es llegeix el setUp de fitxer cal alctualitzar aquest codi per
 // a crear les llums de tipus GPU

@@ -14,6 +14,14 @@ protected:
     vec3 Ia;
     vec3 Id;
     vec3 Is;
+    vec3 abc;
+    vec4 pos;
+    vec3 dir;
+    float cosAngle;
+
+
+    int index;
+
 
 public:
     /*
@@ -23,6 +31,10 @@ public:
      * param Is: component especular de la llum.
      * */
     Light(vec3 Ia, vec3 Id, vec3 Is);
+    Light(vec3 Ia, vec3 Id, vec3 Is, vec3 dir); //dir light
+    Light(vec3 Ia, vec3 Id, vec3 Is, vec3 abc, vec4 pos); //point light
+    Light(vec3 Ia, vec3 Id, vec3 Is, vec3 abc, vec4 pos, vec3 dir, float cosAngle); // spot light
+
     Light();
     vec3 getIa();
     vec3 getId();
@@ -54,6 +66,14 @@ public:
     vec3 getCoeficients() const;
     void setCoeficients(const vec3 &value);
 
+    vec3 getDirLight();
+    void setDirLight(vec3 v);
+
+    float getCosAngle();
+    void setCosAngle(float cos);
+
+    int getIndex();
+    void setIndex(int i);
 
 };
 

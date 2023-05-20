@@ -1,9 +1,35 @@
 #include "Light.hh"
 
-Light::Light(vec3 Ia, vec3 Id, vec3 Is) {
+Light::Light(vec3 Ia, vec3 Id, vec3 Is){
     this->Ia = Ia;
     this->Id = Id;
     this->Is = Is;
+}
+
+Light::Light(vec3 Ia, vec3 Id, vec3 Is, vec3 dir) {
+    this->Ia = Ia;
+    this->Id = Id;
+    this->Is = Is;
+    this->dir = dir;
+}
+
+Light::Light(vec3 Ia, vec3 Id, vec3 Is, vec3 abc, vec4 pos){
+    this->Ia = Ia;
+    this->Id = Id;
+    this->Is = Is;
+    this->abc = abc;
+    this->pos = pos;
+
+}
+
+Light::Light(vec3 Ia, vec3 Id, vec3 Is, vec3 abc, vec4 pos, vec3 dir, float cosAngle){
+    this->Ia = Ia;
+    this->Id = Id;
+    this->Is = Is;
+    this->abc = abc;
+    this->pos = pos;
+    this->dir = dir;
+    this->cosAngle = cosAngle;
 }
 
 Light::Light() {
@@ -62,10 +88,14 @@ void Light::setId(vec3 i) {
  */
 
 vec4 Light::getLightPosition(){
-    //TO DO
+    //done n6
+    return this->pos;
 }
+
 void Light::setLightPosition(vec4 v) {
     // TO DO: Pràctica 2: A canviar a la fase 1
+    //done n6
+    this->pos = v;
 }
 
 
@@ -76,7 +106,8 @@ void Light::setLightPosition(vec4 v) {
 vec3 Light::getCoeficients() const
 {
     // TO DO: Pràctica 2: A canviar a la fase 1
-       return(vec3(1.0, 1.0, 1.0));
+    //Done N6
+       return this->abc;
 }
 
 /**
@@ -86,8 +117,33 @@ vec3 Light::getCoeficients() const
 void Light::setCoeficients(const vec3 &value)
 {
    // TO DO: Pràctica 2: A canviar a la fase 1
+    //Done N6
+    this->abc = value;
 }
 
+vec3 Light::getDirLight(){
+    return this->dir;
+}
+
+void Light::setDirLight(vec3 v){
+    this->dir = v;
+}
+
+float Light::getCosAngle(){
+    return this->cosAngle;
+}
+
+void Light::setCosAngle(float cos){
+    this->cosAngle = cos;
+}
+
+int Light::getIndex(){
+    return this->index;
+}
+
+void Light::setIndex(int i){
+    this->index = i;
+}
 
 
 

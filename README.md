@@ -32,19 +32,26 @@ A continuació s'indica quines parts s'han fet i qui les ha implementat
         - [x] Direccional [Nil] 
         - [x] Spotlight [Nil] 
         - [x] Conexió GPU  + vshader1.glsl implementation [Nil]
-        - [ ] Testeig [Nil] -> Almost there
     - Materials: 
-       - [ ] Pas a la GPU
-       - [ ] Lectura de fitxers .json
+       - [x] Pas a la GPU [Nil + Arturo]
+       - [x] Lectura de fitxers .json: [Arturo]
     - Shading
-        - [x] Color: Arturo
-        - [x] Normal: Arturo
-        - [x] Depth: Arturo
-        - [ ] Phong-Gouraud 
-        - [ ] Phong-Phong
-        - [ ] BlinnPhong-Gouraud 
-        - [ ] BlinnPhong-Phong
-        - [ ] Cel-shading
+        - [x] Color: [Arturo]
+            - [x] Conexió GPU: [Arturo]
+        - [x] Normal: [Arturo]
+            - [x] Conexió GPU: [Arturo]
+        - [x] Depth: [Arturo]
+            - [x] Conexió GPU: [Arturo]
+        - [] Phong-Gouraud :  [Nil]
+            - [x] Conexió GPU: [Nil]
+        - [] Phong-Phong:  [Nil]
+            - [x] Conexió GPU: [Nil]
+        - [] BlinnPhong-Gouraud :
+            - [x] Conexió GPU: [Nil]
+        - [] BlinnPhong-Phong :  [Nil]
+            - [x] Conexió GPU: [Nil]
+        - [x] Cel-shading :  [Nil]
+            - [x] Conexió GPU: [Nil]
     - Textures
         - [ ] Textura com material en un objecte 
         - [ ] Textura al pla base 

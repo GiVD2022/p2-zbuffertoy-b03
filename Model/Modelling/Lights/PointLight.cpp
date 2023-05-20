@@ -1,15 +1,22 @@
 #include "PointLight.hh"
 
-PointLight::PointLight(vec3 posicio, vec3 Ia, vec3 Id, vec3 Is, float a, float b, float c): Light(Ia, Id, Is) {
-    this->pos = posicio;
-    this->a = a;
-    this->b = b;
-    this->c = c;
+PointLight::PointLight(vec3 Ia, vec3 Id, vec3 Is,  vec3 abc, vec4 posicio) : Light(Ia, Id, Is, abc, posicio){
+
+}
+
+PointLight::PointLight() {
+    Ia = vec3(0.2);
+    Id = vec3 (0.8);
+    Is = vec3(1);
+    abc = vec3(0.5,0,0.01);
+    pos = vec3 (10,10,20);
 }
 
 vec3 PointLight::getPos() {
     return this->pos;
 }
+
+
 
 // Afegim getter A, B, C (N6) -> Per si es necesari
 float PointLight::getA(){

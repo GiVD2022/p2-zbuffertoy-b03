@@ -5,6 +5,8 @@
 #include "GPUConnections/GPUCamera.hh"
 #include "Model/Rendering/SetUp.hh"
 
+#include "GPULight.hh"
+
 using namespace std;
 
 class GPUSetUp : public SetUp
@@ -37,18 +39,21 @@ public:
     shared_ptr<GPULight> getLightActual();
     void setLightActual(shared_ptr<GPULight> l);
     void addLight(shared_ptr<GPULight> l);
+    std::vector<shared_ptr<GPULight>> lights;
 
 private:
 
     // Camera
     shared_ptr<GPUCamera> camera;
 
-    // TODO Pràctica 2: FASE 1: Afegir llums a l'escena
     // My global variables (N6)
     GLuint aL; //ambient light, recorda que esta definida a vshader.gls com glAmbientLight
 
     // Vector de llums de l'escena
-    std::vector<shared_ptr<GPULight>> lights;
+
+
+
+
     // Llum global
     vec3 globalLight;
 
