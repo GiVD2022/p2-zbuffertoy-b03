@@ -91,24 +91,6 @@ void GPUSetUp::setAmbientGlobalToGPU(shared_ptr<QGLShaderProgram> program){
  */
 
 
-/*
- *
- *     // TODO Pràctica 2: FASE 1: Afegir llums a l'escena
-    //N6 DONE
-
-    //Vale lights, es un vec3 de llums! Aleshores hem de treballar sabent això...
-    shared_ptr<GPULight> light;
-
-    for(int i = 0; i < lights.size(); i++){
-        lights[light->setIndex(i)];
-    }
-    for (shared_ptr<GPULight> light : lights ) {
-        // Actualizamos los parámetros de la luz en el shader
-
-        light->toGPU(program);
-    }
-
- * */
 
 
 //Aquest métode pasa les llums a la GPU
@@ -117,7 +99,7 @@ void GPUSetUp::lightsToGPU(shared_ptr<QGLShaderProgram> program){
     for(size_t i=0; i < lights.size(); i++){
         lights[i]->setIndex(static_cast<int>(i));
     }
-    //Aleshores amb aquest for, ja cridem al toGPu respectiu depenent dels parametres que li entrin per el shading
+    //Aleshores amb aquest for, ja cridem al toGPu respectiu depenent dels parametres que li ent
     for(size_t i=0; i < lights.size(); i++){
         lights[i]->toGPU(program);
     }

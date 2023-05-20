@@ -36,17 +36,18 @@ struct DirLight{
     vec3 dir; //dir
 };
 
-uniform DirLight myDirLights[4];
+uniform DirLight myDirLights[4]; // num de llums q vull
 
 struct PointLight{
     vec3 Ia; //Intensitat ambiental
     vec3 Id; // Intensitat difusa
     vec3 Is; // Intensitat especular
+    vec3 abc;
     vec4 pos; // Posició (en el cas de llum puntual)
-    vec3 dir;
+
 };
 
-uniform PointLight myPointLights[4];
+uniform PointLight myPointLights[4]; //num de llums q vull
 
 struct SpotLight{
     vec3 Ia; //Intensitat ambiental
@@ -59,7 +60,7 @@ struct SpotLight{
     float cosAngle; // Coseno del ángulo de apertura, en el caso de luz tipo spot
 };
 
-uniform SpotLight mySpotLights[7];
+uniform SpotLight mySpotLights[4]; //num de llums q vull
 
 
 struct Material{

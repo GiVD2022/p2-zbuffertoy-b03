@@ -100,7 +100,7 @@ private:
 
     // TO DO: Pràctica 2: Fase 1: Per ara nomes es té un parell vertex-fragment
     // i cal estendre-ho a tenir mé parells
-    shared_ptr<QGLShaderProgram> program[5];
+    shared_ptr<QGLShaderProgram> program[9];
 
     //Creo un objecte del tipus GPUSetUP, per poder utilitzar els metodes en la meva classe
     //Fase1: Pas1
