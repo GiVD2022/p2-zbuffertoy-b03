@@ -47,6 +47,8 @@ private:
 
     void make();
 
+    //Atribut per emmagatzemar els vertexs de textura (Zijian)
+    vec2 *vertexsTextura;
     void setTexture(shared_ptr<QOpenGLTexture> t);
     void initTexture();
 };
