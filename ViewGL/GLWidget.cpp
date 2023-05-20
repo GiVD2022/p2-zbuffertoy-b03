@@ -107,9 +107,15 @@ void GLWidget::initShadersGPU(){
     GLShader *glshader1 = new GLShader("://resources/GPUshaders/vColorShader.glsl", "://resources/GPUshaders/fColorShader.glsl", program[1]);
     GLShader *glshader2 = new GLShader("://resources/GPUshaders/vDepthShader.glsl", "://resources/GPUshaders/fDepthShader.glsl", program[2]);
     GLShader *glshader3 = new GLShader("://resources/GPUshaders/vNormalShader.glsl", "://resources/GPUshaders/fNormalShader.glsl", program[3]);
-    GLShader *glshader4 = new GLShader("://resources/GPUshaders/vGouraudShader.glsl", "://resources/GPUshaders/fGouraudShader.glsl", program[4]);
+    GLShader *glshader4 = new GLShader("://resources/GPUshaders/vGouraud-PhongShader.glsl", "://resources/GPUshaders/fGouraud-PhongShader.glsl", program[4]);
+    GLShader *glshader5 = new GLShader("://resources/GPUshaders/vPhong-PhongShader.glsl", "://resources/GPUshaders/fPhong-PhongShader.glsl", program[5]);
+    GLShader *glshader6 = new GLShader("://resources/GPUshaders/vGouraud-Blinn-PhongShader.glsl", "://resources/GPUshaders/fGouraud-Blinn-PhongShader.glsl", program[6]);
+    GLShader *glshader7 = new GLShader("://resources/GPUshaders/vPhong-Blinn-PhongShader.glsl", "://resources/GPUshaders/fGouraud-Blinn-PhongShader.glsl", program[7]);
+    GLShader *glshader8 = new GLShader("://resources/GPUshaders/vCellShader.glsl", "://resources/GPUshaders/fCellShader.glsl", program[8]);
 
-    if(glshader1 != nullptr && glshader2 != nullptr && glshader3 != nullptr && glshader4 != nullptr){
+
+
+    if(glshader1 != nullptr && glshader2 != nullptr && glshader3 != nullptr && glshader4 != nullptr && glshader5 != nullptr && glshader6 != nullptr && glshader7 != nullptr && glshader8 != nullptr){
         program[pasarShader]->link();
         program[pasarShader]->bind();
     }
@@ -236,22 +242,46 @@ void GLWidget::activaPhongShader() {
     //TO DO: Pràctica 2:  implementar a la fase 1
     qDebug()<<"Estic a Phong - Phong Shader";
 
+    this->pasarShader = 5;
+    if(program[pasarShader] != nullptr){
+        program[pasarShader]->link();
+        program[pasarShader]->bind();
+        updateScene();
+    }
 }
 
 void GLWidget::activaGouraudBlinnShader() {
     //TO DO: Pràctica 2:  implementar a la fase 1
     qDebug()<<"Estic a Gouraud - Blinn-Phong shader";
 
+    this->pasarShader = 6;
+    if(program[pasarShader] != nullptr){
+        program[pasarShader]->link();
+        program[pasarShader]->bind();
+        updateScene();
+    }
 }
 void GLWidget::activaBlinnPhongShader() {
     //TO DO: Pràctica 2:  implementar a la fase 1
     qDebug()<<"Estic a Phong - Blinn-Phong Shader";
 
+    this->pasarShader = 7;
+    if(program[pasarShader] != nullptr){
+        program[pasarShader]->link();
+        program[pasarShader]->bind();
+        updateScene();
+    }
 }
 
 void GLWidget::activaToonShader() {
     //TO DO: Pràctica 2:  implementar a la fase 1
     qDebug()<<"Estic a Toon";
+    this->pasarShader = 8;
+    if(program[pasarShader] != nullptr){
+        program[pasarShader]->link();
+        program[pasarShader]->bind();
+        updateScene();
+    }
 }
 
 

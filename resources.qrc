@@ -15,7 +15,15 @@
         <file>resources/models/sphere0.obj</file>
         <file>resources/GPUshaders/fDepthShader.glsl</file>
         <file>resources/GPUshaders/vDepthShader.glsl</file>
-        <file>resources/GPUshaders/fGouraudShader.glsl</file>
-        <file>resources/GPUshaders/vGouraudShader.glsl</file>
+        <file>resources/GPUshaders/fGouraud-PhongShader.glsl</file>
+        <file>resources/GPUshaders/vGouraud-PhongShader.glsl</file>
+        <file>resources/GPUshaders/fPhong-PhongShader.glsl</file>
+        <file>resources/GPUshaders/vPhong-PhongShader.glsl</file>
+        <file>resources/GPUshaders/vGouraud-Blinn-PhongShader.glsl</file>
+        <file>resources/GPUshaders/fGouraud-Blinn-PhongShader.glsl</file>
+        <file>resources/GPUshaders/vPhong-Blinn-PhongShader.glsl</file>
+        <file>resources/GPUshaders/fPhong-Blinn-PhongShader.glsl</file>
+        <file>resources/GPUshaders/vCellShader.glsl</file>
+        <file>resources/GPUshaders/fCellShader.glsl</file>
     </qresource>
 </RCC>
