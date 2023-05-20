@@ -15,13 +15,13 @@ void GPUSpotLight::toGPU(shared_ptr<QGLShaderProgram> p) {
     index = SpotLight::getIndex();
 
     // Obtenir ubis de les variables del Shader
-    gl_my_spotLights[index].glIa = program->uniformLocation("mySpotLights.Ia");
-    gl_my_spotLights[index].glId = program->uniformLocation("mySpotLights.Id");
-    gl_my_spotLights[index].glIs = program->uniformLocation("mySpotLights.Is");
-    gl_my_spotLights[index].glABC = program->uniformLocation("mySpotLights.abc");
-    gl_my_spotLights[index].glPos = program->uniformLocation("mySpotLights.pos");
-    gl_my_spotLights[index].glDir = program->uniformLocation("mySpotLights.dir");
-    gl_my_spotLights[index].glCosAngle = program->uniformLocation("mySpotLights.cosAngle");
+    gl_my_spotLights[index].glIa = program->uniformLocation(QString("mySpotLights[%1].Ia").arg(index));
+    gl_my_spotLights[index].glId = program->uniformLocation(QString("mySpotLights[%1].Id").arg(index));
+    gl_my_spotLights[index].glIs = program->uniformLocation(QString("mySpotLights[%1].Is").arg(index));
+    gl_my_spotLights[index].glABC = program->uniformLocation(QString("mySpotLights[%1].abc").arg(index));
+    gl_my_spotLights[index].glPos = program->uniformLocation(QString("mySpotLights[%1].pos").arg(index));
+    gl_my_spotLights[index].glDir = program->uniformLocation(QString("mySpotLights[%1].dir").arg(index));
+    gl_my_spotLights[index].glCosAngle = program->uniformLocation(QString("mySpotLights[%1].cosAngle").arg(index));
 
 
     qDebug() << "SpotLights toGPU2.....";

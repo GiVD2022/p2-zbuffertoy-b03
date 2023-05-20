@@ -12,11 +12,11 @@ void GPUPointLight::toGPU(shared_ptr<QGLShaderProgram> p) {
     index = PointLight::getIndex();
 
     // Obtenir ubis de les variables del Shader
-    gl_my_pointLights[index].glIa = program->uniformLocation("myPointLights.Ia");
-    gl_my_pointLights[index].glId = program->uniformLocation("myPointLights.Id");
-    gl_my_pointLights[index].glIs = program->uniformLocation("myPointLights.Is");
-    gl_my_pointLights[index].glABC = program->uniformLocation("myPointLights.abc");
-    gl_my_pointLights[index].glPos = program->uniformLocation("myPointLights.pos");
+    gl_my_pointLights[index].glIa = program->uniformLocation(QString("myPointLights[%1].Ia").arg(index));
+    gl_my_pointLights[index].glId = program->uniformLocation(QString("myPointLights[%1].Id").arg(index));
+    gl_my_pointLights[index].glIs = program->uniformLocation(QString("myPointLights[%1].Is").arg(index));
+    gl_my_pointLights[index].glABC = program->uniformLocation(QString("myPointLights[%1].abc").arg(index));
+    gl_my_pointLights[index].glPos = program->uniformLocation(QString("myPointLights[%1].pos").arg(index));
 
     qDebug() << "PointLights toGPU2.....";
 
