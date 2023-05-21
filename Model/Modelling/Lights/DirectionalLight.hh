@@ -5,7 +5,7 @@
 
 class DirectionalLight : public Light {
 public:
-    DirectionalLight() {};
+    DirectionalLight();
     // Parámetros:
     // - dir: dirección de la luz.
     // - Ia: componente ambiental de la luz.

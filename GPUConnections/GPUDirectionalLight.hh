@@ -5,7 +5,7 @@
 
 class GPUDirectionalLight : public GPULight, public DirectionalLight {
 public:
-    GPUDirectionalLight() {};
+    GPUDirectionalLight();
     /*
      * Constructor de la classe DirectionalLight.
      * param dir: direcció en la que apunta la llum.

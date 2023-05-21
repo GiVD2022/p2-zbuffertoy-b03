@@ -7,14 +7,15 @@ GPULight::GPULight(vec3 Ia, vec3 Id, vec3 Is): Light(Ia, Id, Is){
 GPULight::GPULight() {
 }
 
-/*
+
 void GPULight::toGPU(shared_ptr<QGLShaderProgram> p) {
     // TO DO Pràctica 2: Fase 1: enviar les propietats de Ia, Id i Is a la GPU
+}
 
-    qDebug() << "Lights toGPU.....";
-    program = p;
 
-    //N6
+
+/*
+ *     //N6
     // Obtenir ubis de les variables del Shader
     gl_my_lights.glIa = program->uniformLocation("myLights.Ia");
     gl_my_lights.glId = program->uniformLocation("myLights.Id");
@@ -26,9 +27,9 @@ void GPULight::toGPU(shared_ptr<QGLShaderProgram> p) {
 
     qDebug() << "Lights toGPU2.....";
 
-    /*
-     * Valors hadcoded per si vols testeig
-     *
+
+    // * Valors hadcoded per si vols testeig
+    // *
     vec3 vectorIa(0.1f, 0.1f, 0.1f);
     vec3 vectorId(1.0f, 1.0f, 1.0f);
     vec3 vectorIs(0.8f, 0.8f, 0.8f);
@@ -47,9 +48,9 @@ void GPULight::toGPU(shared_ptr<QGLShaderProgram> p) {
 
     float cosAngle = cos_angulo_apertura;
 
-    */
 
-/*
+
+
     // Enviar valors a GPU
     glUniform3fv(gl_my_lights.glIa, 1, this->getIa());
     glUniform3fv(gl_my_lights.glId, 1, this->getId());
@@ -63,8 +64,4 @@ void GPULight::toGPU(shared_ptr<QGLShaderProgram> p) {
     glUniform1f(gl_my_lights.glCosAngle, this->getCosAngle());
 
     qDebug() << "Light toGPU3.....";
-
-}
-
-*/
-
+ */

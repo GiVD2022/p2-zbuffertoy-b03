@@ -5,7 +5,7 @@
 
 class SpotLight : public Light {
 public:
-    SpotLight() {};
+    SpotLight();
     // Parámetros:
     // - pos: posición de la luz.
     // - dir: dirección a la que apunta la luz.
