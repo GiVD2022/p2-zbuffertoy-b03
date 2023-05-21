@@ -1,13 +1,10 @@
 #version 330
 
-// Input data interpolated from the vertex shader
-in vec4 vColor;
-
-// Output color
-out vec4 fragColor;
+in vec3 color;
+out vec4 colorOut;
 
 void main() {
-
-    fragColor = vColor;
+    colorOut = vec4(color, 1.0);
 }
+
 

@@ -62,8 +62,8 @@ void main() {
     vec3 diffuse = vec3(0.0);
     vec3 specular = vec3(0.0);
 
-    vec4 L, N, V, H;
-    float attenuation, dist;
+    vec4 L, N, V, R;
+    float attenuation, dist, cos;
     N = normalize(normal);
 
     for (int i = 0; i < 4; i++) {
@@ -71,21 +71,24 @@ void main() {
         if(myDirLights[i].dir != vec3(0)){
             ambient += myDirLights[i].Ia * myMaterial.Ka;
             L = vec4(normalize(-myDirLights[i].dir), 1.0f);
-            diffuse += myDirLights[i].Id * myMaterial.Kd * max(dot(L, N), 0.0f);
-            H = normalize(L+V);
-            specular += myDirLights[i].Is * myMaterial.Ks * pow(max(dot(H, N),0.0f), myMaterial.shiness);
+            cos = dot(L, N);
+            R = 2.0f * N * cos - L;
+            diffuse += myDirLights[i].Id * myMaterial.Kd * cos;
+            specular += myDirLights[i].Is * myMaterial.Ks * pow(max(dot(V, R),0.0f), myMaterial.shiness);
         }else if(mySpotLights[i].dir != vec3(0)){
             ambient += mySpotLights[i].Ia * myMaterial.Ka;
             L = vec4(normalize(-mySpotLights[i].dir), 1.0f);
-            diffuse += mySpotLights[i].Id * myMaterial.Kd * max(dot(L, N), 0.0f);
-            H = normalize(L+V);
-            specular += mySpotLights[i].Is * myMaterial.Ks * pow(max(dot(H, N),0.0f), myMaterial.shiness);
+            cos = dot(L, N);
+            R = 2.0f * N * cos - L;
+            diffuse += mySpotLights[i].Id * myMaterial.Kd * cos;
+            specular += mySpotLights[i].Is * myMaterial.Ks * pow(max(dot(V, R),0.0f), myMaterial.shiness);
         }else{
             ambient += myPointLights[i].Ia * myMaterial.Ka;
             L = normalize(myPointLights[i].pos - vPosition);
-            diffuse += myPointLights[i].Id * myMaterial.Kd * max(dot(L,N), 0.0f);
-            H = normalize(L+V);
-            specular += myPointLights[i].Is * myMaterial.Ks * pow(max(dot(H, N),0.0f), myMaterial.shiness);
+            cos = dot(L, N);
+            R = 2.0f * N * cos - L;
+            diffuse += myPointLights[i].Id * myMaterial.Kd * cos;
+            specular += myPointLights[i].Is * myMaterial.Ks * pow(max(dot(V, R),0.0f), myMaterial.shiness);
         }
     }
 
