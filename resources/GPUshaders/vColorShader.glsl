@@ -51,15 +51,18 @@ uniform Material myMaterial;
 
 out vec4 color;
 
+uniform vec3 glAmbientLight;
+
 void main()
 {
 
     gl_Position = projection*model_view*vPosition;
     gl_Position = gl_Position/gl_Position.w;
 
+
+    //color = vec4(mySpotLights[0].Ia, 1.0f);
     //color = vec4(myMaterial.Ka, 1.0f);
-    color = vec4(myPointLights[0].Ia, 1.0);
-    //color = vec4(myMaterial.Kd, 1.0f);
+    color = vec4(myMaterial.Kd, 1.0f);
     //color = vec4(myMaterial.Ks, 1.0f);
 
 }

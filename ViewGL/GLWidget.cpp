@@ -54,6 +54,7 @@ void GLWidget::initializeGL() {
     Controller::getInstance()->getSetUp()->lights.push_back(spotLight);
 
     Controller::getInstance()->getSetUp()->lightsToGPU(program[pasarShader]);
+    Controller::getInstance()->getSetUp()->setAmbientGlobalToGPU(this->program[pasarShader]);
 
     shared_ptr<GPUCamera> camera = Controller::getInstance()->getSetUp()->getCamera();
     auto scene = Controller::getInstance()->getScene();
@@ -103,8 +104,8 @@ void GLWidget::resizeGL(int width, int height) {
  * @brief GLWidget::initShadersGPU
  */
 void GLWidget::initShadersGPU(){
-    GLShader *glshader1 = new GLShader("://resources/GPUshaders/vshader1.glsl", "://resources/GPUshaders/fshader1.glsl", program[1]);
-    //GLShader *glshader1 = new GLShader("://resources/GPUshaders/vColorShader.glsl", "://resources/GPUshaders/fColorShader.glsl", program[1]);
+    //GLShader *glshader1 = new GLShader("://resources/GPUshaders/vshader1.glsl", "://resources/GPUshaders/fshader1.glsl", program[1]);
+    GLShader *glshader1 = new GLShader("://resources/GPUshaders/vColorShader.glsl", "://resources/GPUshaders/fColorShader.glsl", program[1]);
     GLShader *glshader2 = new GLShader("://resources/GPUshaders/vDepthShader.glsl", "://resources/GPUshaders/fDepthShader.glsl", program[2]);
     GLShader *glshader3 = new GLShader("://resources/GPUshaders/vNormalShader.glsl", "://resources/GPUshaders/fNormalShader.glsl", program[3]);
     GLShader *glshader4 = new GLShader("://resources/GPUshaders/vGouraud-PhongShader.glsl", "://resources/GPUshaders/fGouraud-PhongShader.glsl", program[4]);
@@ -200,6 +201,8 @@ void GLWidget::activaColorShader() {
     if(program[pasarShader] != nullptr){
         program[pasarShader]->link();
         program[pasarShader]->bind();
+        Controller::getInstance()->getSetUp()->lightsToGPU(program[pasarShader]);
+        Controller::getInstance()->getSetUp()->setAmbientGlobalToGPU(this->program[pasarShader]);
         updateScene();
     }
     qDebug()<<"Estic a Color Shader";
@@ -211,6 +214,8 @@ void GLWidget::activaDepthShader() {
     if(program[pasarShader] != nullptr){
         program[pasarShader]->link();
         program[pasarShader]->bind();
+        Controller::getInstance()->getSetUp()->lightsToGPU(program[pasarShader]);
+        Controller::getInstance()->getSetUp()->setAmbientGlobalToGPU(this->program[pasarShader]);
         updateScene();
     }
     qDebug()<<"Estic a Depth Shader";
@@ -222,6 +227,8 @@ void GLWidget::activaNormalShader() {
     if(program[pasarShader] != nullptr){
         program[pasarShader]->link();
         program[pasarShader]->bind();
+        Controller::getInstance()->getSetUp()->lightsToGPU(program[pasarShader]);
+        Controller::getInstance()->getSetUp()->setAmbientGlobalToGPU(this->program[pasarShader]);
         updateScene();
     }
     qDebug()<<"Estic a Normal Shader";
@@ -233,6 +240,8 @@ void GLWidget::activaGouraudShader() {
     if(program[pasarShader] != nullptr){
         program[pasarShader]->link();
         program[pasarShader]->bind();
+        Controller::getInstance()->getSetUp()->lightsToGPU(program[pasarShader]);
+        Controller::getInstance()->getSetUp()->setAmbientGlobalToGPU(this->program[pasarShader]);
         updateScene();
     }
     qDebug()<<"Estic a Gouraud - Phong shader";
@@ -246,6 +255,8 @@ void GLWidget::activaPhongShader() {
     if(program[pasarShader] != nullptr){
         program[pasarShader]->link();
         program[pasarShader]->bind();
+        Controller::getInstance()->getSetUp()->lightsToGPU(program[pasarShader]);
+        Controller::getInstance()->getSetUp()->setAmbientGlobalToGPU(this->program[pasarShader]);
         updateScene();
     }
 }
@@ -258,6 +269,8 @@ void GLWidget::activaGouraudBlinnShader() {
     if(program[pasarShader] != nullptr){
         program[pasarShader]->link();
         program[pasarShader]->bind();
+        Controller::getInstance()->getSetUp()->lightsToGPU(program[pasarShader]);
+        Controller::getInstance()->getSetUp()->setAmbientGlobalToGPU(this->program[pasarShader]);
         updateScene();
     }
 }
@@ -269,6 +282,8 @@ void GLWidget::activaBlinnPhongShader() {
     if(program[pasarShader] != nullptr){
         program[pasarShader]->link();
         program[pasarShader]->bind();
+        Controller::getInstance()->getSetUp()->lightsToGPU(program[pasarShader]);
+        Controller::getInstance()->getSetUp()->setAmbientGlobalToGPU(this->program[pasarShader]);
         updateScene();
     }
 }
@@ -280,6 +295,8 @@ void GLWidget::activaToonShader() {
     if(program[pasarShader] != nullptr){
         program[pasarShader]->link();
         program[pasarShader]->bind();
+        Controller::getInstance()->getSetUp()->lightsToGPU(program[pasarShader]);
+        Controller::getInstance()->getSetUp()->setAmbientGlobalToGPU(this->program[pasarShader]);
         updateScene();
     }
 }
