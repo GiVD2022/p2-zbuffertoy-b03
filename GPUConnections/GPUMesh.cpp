@@ -9,7 +9,7 @@ GPUMesh::GPUMesh()
     //Inicialitzem Textura
 
     vertexsTextura = new vec2[numPoints];
-    initTexture();
+     if(!textVertexs.empty())initTexture();
 
     //inicialitzem dates N6
     vec3 ambient(0.1f,  0.02f, 0.02f);
@@ -30,7 +30,7 @@ GPUMesh::GPUMesh(const QString &fileName): Mesh(fileName)
     normals = new vec4[numPoints];
     colors = new vec4[numPoints];
     vertexsTextura = new vec2[numPoints];
-    initTexture();
+     if(!textVertexs.empty())initTexture();
 
     vec3 ambient(0.1f,  0.02f, 0.02f);
     vec3  diffuse(1.0f, 0.2f, 0.2f);
@@ -51,7 +51,7 @@ GPUMesh::GPUMesh(const int npoints, const QString &fileName): Mesh(fileName)
     normals= new vec4[numPoints];
     colors = new vec4[numPoints];
     vertexsTextura = new vec2[numPoints];
-    initTexture();
+     if(!textVertexs.empty())initTexture();
 
     vec3 ambient(0.1f,  0.02f, 0.02f);
     vec3  diffuse(1.0f, 0.2f, 0.2f);
@@ -70,7 +70,7 @@ void GPUMesh::read(const QJsonObject &json) {
     normals= new vec4[numPoints];
     colors = new vec4[numPoints];
     vertexsTextura = new vec2[numPoints];
-    initTexture();
+     if(!textVertexs.empty())initTexture();
 
     vec3 ambient(0.1f,  0.02f, 0.02f);
     vec3  diffuse(1.0f, 0.2f, 0.2f);
@@ -92,6 +92,7 @@ GPUMesh::~GPUMesh() {
     if (points!= nullptr) delete points;
     if (normals!= nullptr) delete normals;
     if (colors!= nullptr) delete colors;
+    if (vertexsTextura!=nullptr) delete vertexsTextura;
 }
 
 /**
@@ -206,7 +207,7 @@ void GPUMesh::initTexture()
     // TO DO: A implementar a la fase 1 de la practica 2
     // Cal inicialitzar la textura de l'objecte: veure l'exemple del CubGPUTextura
 
-    if(!textVertexs.empty())qDebug() << "Initializing textures...\n";
+   qDebug() << "Initializing textures...\n";
 
     //Implementat (Zijian)
     // Carregar la textura
@@ -223,7 +224,20 @@ void GPUMesh::initTexture()
  }
 
 void GPUMesh::setTexture(shared_ptr<QOpenGLTexture> t){
-   texture = t;
+    qDebug() << "Setting textures...\n";
+
+     //Implementat (Zijian)
+     // Carregar la textura
+     glActiveTexture(GL_TEXTURE0);
+     texture = t;
+     if(!texture->isCreated()){
+         qDebug() << "No s'ha carregat correctament...\n";
+         return;
+     }
+     texture->setMinificationFilter(QOpenGLTexture::LinearMipMapLinear);
+     texture->setMagnificationFilter(QOpenGLTexture::Linear);
+     texture->bind(0);
+     qDebug() << "textures setted...\n";
 }
 
 Capsa3D GPUMesh::calculCapsa3D()

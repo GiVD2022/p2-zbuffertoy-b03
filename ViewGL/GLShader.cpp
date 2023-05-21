@@ -22,5 +22,6 @@ void GLShader::activateShader(shared_ptr<QGLShaderProgram> p){
 //Metode per activar shaders de textures
 void GLShader::activateShaderTexture(){
     //TO DO: Pràctica 2:  implementar a la fase 1
-
+    glEnable(GL_TEXTURE_2D);
+    glActiveTexture(GL_TEXTURE0);
 }
