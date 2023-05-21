@@ -73,7 +73,7 @@ void GPUSetUp::setAmbientGlobalToGPU(shared_ptr<QGLShaderProgram> program){
     //this->aL =  program->uniformLocation("glAmbientLight");
     // Enviem valors ddel vector 3D a la GPU (N6)
     //glUniform3fv(aL, 1, vector3D);
-    vec3 global = vec3(0.1);
+    vec3 global = vec3(0.3);
     GLuint gl_globalLight = program->uniformLocation("glAmbientLight");
     glUniform3fv(gl_globalLight, 1, global);
 
