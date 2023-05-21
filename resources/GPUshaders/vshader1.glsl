@@ -25,7 +25,8 @@ struct Light{
 
 
 uniform Light myLights[4]; // 4 represneta el nombre de llums que volem, es arbitraria
-*/
+*/    texture->bind(0);
+
 
 //Mira al final faré una struct per cada llum, i ja esta em vull morir N6
 
