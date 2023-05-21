@@ -7,15 +7,15 @@ SpotLight::SpotLight(vec3 Ia, vec3 Id, vec3 Is, vec3 abc, vec4 pos, vec3 dir, fl
 }
 
 SpotLight::SpotLight() {
-    this->Ia = vec3(0);
-    this->Id = vec3 (0);
-    this->Is = vec3(0);
-    this->pos = vec3 (0);
-    this->dir = vec3(0);
-    this->a = 0;
+    this->Ia = vec3(0.2);
+    this->Id = vec3 (0.8);
+    this->Is = vec3(1.0);
+    this->pos = vec3 (10,10,20);
+    this->dir = vec3(5);
+    this->a = 0.5;
     this->b = 0;
-    this->c = 0;
-    this->cosAngle = 0;
+    this->c = 0.01;
+    this->cosAngle = 30;
 }
 
 vec3 SpotLight::getPos() {
