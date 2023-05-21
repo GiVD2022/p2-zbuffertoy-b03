@@ -32,12 +32,11 @@ GPUMesh::GPUMesh(const QString &fileName): Mesh(fileName)
     vertexsTextura = new vec2[numPoints];
      if(!textVertexs.empty())initTexture();
 
-    vec3 ambient(0.1f,  0.02f, 0.02f);
-    vec3  diffuse(1.0f, 0.2f, 0.2f);
-    vec3 specular(1.0f, 1.0f, 1.0f);
-    vec3 transparency(0.0f, 0.0f, 0.0f);
-    float shininess = 20.0f;
-    float opacity = 2.0f;
+     vec3 ambient(0.2f,  0.02f, 0.02f);
+     vec3  diffuse(0.8f, 0.5f, 0.5f);
+     vec3 specular(1.0f, 1.0f, 1.0f);
+     float shininess = 20.0f;
+     float opacity = 2.0f;
 
     material = make_shared<GPUMaterial>(ambient, diffuse, specular, shininess, opacity);
 
@@ -53,12 +52,11 @@ GPUMesh::GPUMesh(const int npoints, const QString &fileName): Mesh(fileName)
     vertexsTextura = new vec2[numPoints];
      if(!textVertexs.empty())initTexture();
 
-    vec3 ambient(0.1f,  0.02f, 0.02f);
-    vec3  diffuse(1.0f, 0.2f, 0.2f);
-    vec3 specular(1.0f, 1.0f, 1.0f);
-    vec3 transparency(0.0f, 0.0f, 0.0f);
-    float shininess = 20.0f;
-    float opacity = 2.0f;
+     vec3 ambient(0.2f,  0.02f, 0.02f);
+     vec3  diffuse(0.8f, 0.5f, 0.5f);
+     vec3 specular(1.0f, 1.0f, 1.0f);
+     float shininess = 20.0f;
+     float opacity = 2.0f;
 
     material = make_shared<GPUMaterial>(ambient, diffuse, specular, shininess, opacity);
     make();
@@ -70,12 +68,11 @@ void GPUMesh::read(const QJsonObject &json) {
     normals= new vec4[numPoints];
     colors = new vec4[numPoints];
     vertexsTextura = new vec2[numPoints];
-     if(!textVertexs.empty())initTexture();
+    if(!textVertexs.empty())initTexture();
 
-    vec3 ambient(0.1f,  0.02f, 0.02f);
-    vec3  diffuse(1.0f, 0.2f, 0.2f);
+    vec3 ambient(0.2f,  0.02f, 0.02f);
+    vec3  diffuse(0.8f, 0.5f, 0.5f);
     vec3 specular(1.0f, 1.0f, 1.0f);
-    vec3 transparency(0.0f, 0.0f, 0.0f);
     float shininess = 20.0f;
     float opacity = 2.0f;
 
