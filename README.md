@@ -56,8 +56,8 @@ A continuació s'indica quines parts s'han fet i qui les ha implementat
         - [x] Cel-shading :  [Nil]
             - [x] Conexió GPU: [Nil]
     - Textures
-        - [ ] Textura com material en un objecte 
-        - [ ] Textura al pla base 
+        - [ ] Textura com material en un objecte [Zijian]
+        - [ ] Textura al pla base [Zijian]
     - Adaptació a la lectura de fitxers de dades
         - [ ] Escenes virtuals 
         - [ ] SetUp
