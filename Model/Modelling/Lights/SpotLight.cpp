@@ -12,9 +12,7 @@ SpotLight::SpotLight() {
     this->Is = vec3(1.0);
     this->pos = vec3 (10,10,20);
     this->dir = vec3(5);
-    this->a = 0.5;
-    this->b = 0;
-    this->c = 0.01;
+    this->abc = vec3(0.5, 0, 0.01);
     this->cosAngle = 30;
 }
 
