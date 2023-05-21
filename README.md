@@ -8,6 +8,7 @@ Codi de la Pràctica 2 de GiVD: ZBufferToy 2022-23
 * [Features](#Features)
 * [Extensions addicionals](#Extensions)
 * [Memòria](#Memòria)
+* [Fotografies](#Fotografies)
 
 
 ## Equip
@@ -88,3 +89,9 @@ A continuació s'indica quines parts s'han fet i qui les ha implementat
     Ara es crea una llum puntual al initializeGL() de la classe GLWidget, quan l’hauries de passar a la GPU? A l’inici de
     tot? Cada vegada que es visualitza l’escena? 
         
+## Fotografies
+[ColorShading](https://github.com/GiVD2022/p2-zbuffertoy-b03/assets/72517965/437b7a35-9bbe-43c3-b724-f539157be86c)
+[NormalShading](https://github.com/GiVD2022/p2-zbuffertoy-b03/assets/72517965/b2128d01-ce39-4248-9c84-4ddbba938d55)
+[DepthShading](https://github.com/GiVD2022/p2-zbuffertoy-b03/assets/72517965/c424a7fa-1b0d-4680-a92e-279d8528c085)
+
+
