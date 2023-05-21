@@ -45,9 +45,9 @@ A continuació s'indica quines parts s'han fet i qui les ha implementat
             - [x] Conexió GPU: [Arturo]
         - [x] Depth: [Arturo]
             - [x] Conexió GPU: [Arturo]
-        - [] Phong-Gouraud :  [Nil]
+        - [x] Phong-Gouraud :  [Arturo]
             - [x] Conexió GPU: [Nil]
-        - [] Phong-Phong:  [Nil]
+        - [x] Phong-Phong:  [Arturo]
             - [x] Conexió GPU: [Nil]
         - [] BlinnPhong-Gouraud :
             - [x] Conexió GPU: [Nil]
