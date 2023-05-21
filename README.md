@@ -32,8 +32,9 @@ A continuació s'indica quines parts s'han fet i qui les ha implementat
         - [x] Direccional [Nil] 
         - [x] Spotlight [Nil] 
         - [x] Conexió GPU  + vshader1.glsl implementation [Nil]
+        - [x] Arreglament de Lights [Asier]
     - Materials: 
-       - [x] Pas a la GPU [Nil + Arturo]
+       - [x] Pas a la GPU [Arturo + Nil]
        - [x] Lectura de fitxers .json: [Arturo]
     - Shading
         - [x] Color: [Arturo]
