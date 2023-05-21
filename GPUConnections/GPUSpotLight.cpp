@@ -6,13 +6,26 @@ GPUSpotLight::GPUSpotLight(vec3 Ia, vec3 Id, vec3 Is, vec3 abc, vec4 pos, vec3 d
 
 }
 
+GPUSpotLight::GPUSpotLight() {
+    SpotLight::Ia = vec3(0.2);
+    SpotLight::Id = vec3 (0.8);
+    SpotLight::Is = vec3(1);
+    vec3 pos = vec3(10,10,20);
+    vec3 dir = vec3(5);
+    float a = 0.5;
+    float b = 0;
+    float c = 0.01;
+    float cosAngle = 30;
+}
+
 void GPUSpotLight::toGPU(shared_ptr<QGLShaderProgram> p) {
     qDebug() << "SpotLights toGPU.....";
     program = p;
     int index;
 
     //Hola! Això em permet agafar el termet i-essim, agafo getter i setter de la classe Light!
-    index = SpotLight::getIndex();
+    //index = SpotLight::getIndex();
+    index = 0;
 
     // Obtenir ubis de les variables del Shader
     gl_my_spotLights[index].glIa = program->uniformLocation(QString("mySpotLights[%1].Ia").arg(index));

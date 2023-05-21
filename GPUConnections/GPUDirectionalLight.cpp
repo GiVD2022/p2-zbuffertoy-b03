@@ -6,12 +6,22 @@ GPUDirectionalLight::GPUDirectionalLight(vec3 Ia, vec3 Id, vec3 Is, vec3 dir) :
 
 }
 
+GPUDirectionalLight::GPUDirectionalLight() {
+    DirectionalLight::Ia = vec3(0.2);
+    DirectionalLight::Id = vec3 (0.8);
+    DirectionalLight::Is = vec3(1);
+    DirectionalLight::dir = vec3(1);
+}
+
 void GPUDirectionalLight::toGPU(shared_ptr<QGLShaderProgram> p) {
     qDebug() << "DirLights toGPU.....";
     program = p;
     int index;
 
-    index = DirectionalLight::getIndex();
+    //index = DirectionalLight::getIndex();
+    index = 0;
+
+
 
     // Obtenir ubis de les variables del Shader
     gl_my_dirLights[index].glIa = program->uniformLocation(QString("myDirLights[%1].Ia").arg(index));

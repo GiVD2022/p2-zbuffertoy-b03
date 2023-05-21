@@ -19,7 +19,7 @@ private:
     gl_spotLight gl_my_spotLights[7];
 
 public:
-    GPUSpotLight() {}
+    GPUSpotLight();
     /*
      * Constructor de la classe SpotLight.
      * param pos: posició de la llum.

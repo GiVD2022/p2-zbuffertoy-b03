@@ -6,7 +6,7 @@
 
 class PointLight: public Light {
 public:
-    PointLight() {};
+    PointLight();
     /*
      * Constructor de la classe PointLight.
      * param posicio: posició de la llum.
@@ -33,7 +33,7 @@ public:
     virtual void read (const QJsonObject &json) override;
     virtual void write(QJsonObject &json) const override;
     virtual void print(int indentation) const override;
-private:
+protected:
 
     vec3 pos;
     float a; // atenuacio: terme constant

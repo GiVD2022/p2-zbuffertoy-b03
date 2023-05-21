@@ -35,7 +35,6 @@ struct DirLight{
     vec3 Is; // Intensitat especular
     vec3 dir; //dir
 };
-
 uniform DirLight myDirLights[4]; // num de llums q vull
 
 struct PointLight{
@@ -80,5 +79,5 @@ void main()
     gl_Position = projection*model_view*vPosition;
     gl_Position = gl_Position/gl_Position.w;
 
-    color = vColor;
+    color = vec4(mySpotLights[0].Id, 1);
 }

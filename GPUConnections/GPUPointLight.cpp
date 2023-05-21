@@ -4,12 +4,21 @@ GPUPointLight::GPUPointLight(vec3 Ia, vec3 Id, vec3 Is, vec3 abc, vec4 pos): Poi
 
 }
 
+GPUPointLight::GPUPointLight() {
+    PointLight::Ia = vec3(0.2);
+    PointLight::Id = vec3 (0.8);
+    PointLight::Is = vec3(1);
+    PointLight::abc = vec3(0.5,0,0.01);
+    PointLight::pos = vec3 (10,10,20);
+}
+
 void GPUPointLight::toGPU(shared_ptr<QGLShaderProgram> p) {
     qDebug() << "PointLights toGPU.....";
     program = p;
     int index;
 
-    index = PointLight::getIndex();
+    //index = PointLight::getIndex(); //no funciona el index ns xq me raya
+    index = 0;
 
     // Obtenir ubis de les variables del Shader
     gl_my_pointLights[index].glIa = program->uniformLocation(QString("myPointLights[%1].Ia").arg(index));
@@ -19,6 +28,7 @@ void GPUPointLight::toGPU(shared_ptr<QGLShaderProgram> p) {
     gl_my_pointLights[index].glPos = program->uniformLocation(QString("myPointLights[%1].pos").arg(index));
 
     qDebug() << "PointLights toGPU2.....";
+    QTextStream(stdout) << "\n\n\n\n" << PointLight::getIa() << "\n\n\n\n";
 
     // Enviar valors a GPU
     glUniform3fv(gl_my_pointLights[index].glIa, 1, this->PointLight::getIa());
@@ -26,7 +36,6 @@ void GPUPointLight::toGPU(shared_ptr<QGLShaderProgram> p) {
     glUniform3fv(gl_my_pointLights[index].glIs, 1, this->PointLight::getIs());
     glUniform3fv(gl_my_pointLights[index].glABC, 1, this->PointLight::getCoeficients());
     glUniform4fv(gl_my_pointLights[index].glPos, 1, this->PointLight::getLightPosition());
-
 
 
     qDebug() << "PointLights toGPU3.....";

@@ -68,11 +68,15 @@ void GPUSetUp::addLight(shared_ptr<GPULight> l) {
 // Aquest es el metode que envia les llums a la GPU (N6)
 void GPUSetUp::setAmbientGlobalToGPU(shared_ptr<QGLShaderProgram> program){
     // Pràctica 2: Fase 1 lights
-    vec3 vector3D(0.2f, 0.2f, 0.2f); // Valors llum ammbiental (vector de floats) (N6)
+    //vec3 vector3D(0.2f, 0.2f, 0.2f); // Valors llum ammbiental (vector de floats) (N6)
     // Obtenim ubi memoria GPU per la variable uniforme glAmbientLight (N6)
-    this->aL =  program->uniformLocation("glAmbientLight");
+    //this->aL =  program->uniformLocation("glAmbientLight");
     // Enviem valors ddel vector 3D a la GPU (N6)
-    glUniform3fv(aL, 1, vector3D);
+    //glUniform3fv(aL, 1, vector3D);
+    vec3 global = vec3(0.1);
+    GLuint gl_globalLight = program->uniformLocation("glAmbientLight");
+    glUniform3fv(gl_globalLight, 1, global);
+
 }
 
 

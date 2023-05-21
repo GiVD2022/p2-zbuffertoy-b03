@@ -41,20 +41,19 @@ void GLWidget::initializeGL() {
 
     this->myGPUSetUp.setAmbientGlobalToGPU(this->program[pasarShader]);
 
-    std::vector<shared_ptr<GPULight>> ligths;
     //llum puntual
     auto pointLight  = GPULightFactory::getInstance().createLight(LightFactory::POINTLIGHT);
-    ligths.push_back(pointLight);
+    Controller::getInstance()->getSetUp()->lights.push_back(pointLight);
 
     //llum direccional
     auto directionalLight  = GPULightFactory::getInstance().createLight(LightFactory::DIRECTIONALLIGHT);
-    ligths.push_back(directionalLight);
+    Controller::getInstance()->getSetUp()->lights.push_back(directionalLight);
 
     //llum SpotLight
     auto spotLight  = GPULightFactory::getInstance().createLight(LightFactory::SPOTLIGHT);
-    ligths.push_back(spotLight);
+    Controller::getInstance()->getSetUp()->lights.push_back(spotLight);
 
-    Controller::getInstance()->getSetUp()->setLights(ligths);
+    Controller::getInstance()->getSetUp()->lightsToGPU(program[pasarShader]);
 
     shared_ptr<GPUCamera> camera = Controller::getInstance()->getSetUp()->getCamera();
     auto scene = Controller::getInstance()->getScene();
@@ -104,7 +103,8 @@ void GLWidget::resizeGL(int width, int height) {
  * @brief GLWidget::initShadersGPU
  */
 void GLWidget::initShadersGPU(){
-    GLShader *glshader1 = new GLShader("://resources/GPUshaders/vColorShader.glsl", "://resources/GPUshaders/fColorShader.glsl", program[1]);
+    GLShader *glshader1 = new GLShader("://resources/GPUshaders/vshader1.glsl", "://resources/GPUshaders/fshader1.glsl", program[1]);
+    //GLShader *glshader1 = new GLShader("://resources/GPUshaders/vColorShader.glsl", "://resources/GPUshaders/fColorShader.glsl", program[1]);
     GLShader *glshader2 = new GLShader("://resources/GPUshaders/vDepthShader.glsl", "://resources/GPUshaders/fDepthShader.glsl", program[2]);
     GLShader *glshader3 = new GLShader("://resources/GPUshaders/vNormalShader.glsl", "://resources/GPUshaders/fNormalShader.glsl", program[3]);
     GLShader *glshader4 = new GLShader("://resources/GPUshaders/vGouraud-PhongShader.glsl", "://resources/GPUshaders/fGouraud-PhongShader.glsl", program[4]);

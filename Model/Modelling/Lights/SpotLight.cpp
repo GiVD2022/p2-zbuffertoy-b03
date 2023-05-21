@@ -6,6 +6,18 @@ SpotLight::SpotLight(vec3 Ia, vec3 Id, vec3 Is, vec3 abc, vec4 pos, vec3 dir, fl
 
 }
 
+SpotLight::SpotLight() {
+    Ia = vec3(0.2);
+    Id = vec3 (0.8);
+    Is = vec3(1);
+    vec3 pos = vec3(10,10,20);
+    vec3 dir = vec3(5);
+    float a = 0.5;
+    float b = 0;
+    float c = 0.01;
+    float cosAngle = 30;
+}
+
 vec3 SpotLight::getPos() {
     return pos;
 }
