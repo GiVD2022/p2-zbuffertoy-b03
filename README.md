@@ -49,10 +49,10 @@ A continuació s'indica quines parts s'han fet i qui les ha implementat
             - [x] Conexió GPU: [Nil]
         - [x] Phong-Phong:  [Arturo]
             - [x] Conexió GPU: [Nil]
-        - [] BlinnPhong-Gouraud :
+        - [x] BlinnPhong-Gouraud : [Arturo]
             - [x] Conexió GPU: [Nil]
-        - [] BlinnPhong-Phong :  [Nil]
-            - [x] Conexió GPU: [Nil]
+        - [x] BlinnPhong-Phong :  [Arturo]
+            - [x] Conexió GPU: [Arturo + Nil]
         - [x] Cel-shading :  [Nil]
             - [x] Conexió GPU: [Nil]
     - Textures
