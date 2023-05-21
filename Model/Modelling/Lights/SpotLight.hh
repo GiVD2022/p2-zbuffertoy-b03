@@ -31,6 +31,7 @@ public:
 protected:
     vec3 pos;       // posicio de la llum
     vec3 dir;       // dirección hacia la que apunta la luz
+    vec3 abc;
     float a;        // atenuación: término constante
     float b;        // atenuación: término lineal
     float c;        // atenuación: término cuadrático

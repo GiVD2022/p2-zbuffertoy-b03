@@ -5,11 +5,6 @@ GPUPointLight::GPUPointLight(vec3 Ia, vec3 Id, vec3 Is, vec3 abc, vec4 pos): Poi
 }
 
 GPUPointLight::GPUPointLight() {
-    PointLight::Ia = vec3(0.2);
-    PointLight::Id = vec3 (0.8);
-    PointLight::Is = vec3(1);
-    PointLight::abc = vec3(0.5,0,0.01);
-    PointLight::pos = vec3 (10,10,20);
 }
 
 void GPUPointLight::toGPU(shared_ptr<QGLShaderProgram> p) {

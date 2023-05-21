@@ -70,12 +70,24 @@ void main()
         }else if(mySpotLights[i].dir != vec3(0)){
             ambient += mySpotLights[i].Ia * myMaterial.Ka;
             L = vec4(normalize(-mySpotLights[i].dir), 1.0f);
+            if(abs(mySpotLights[i].abc.x)<0.001f && abs(mySpotLights[i].abc.y)<0.001f && abs(mySpotLights[i].abc.z)<0.001f ){
+                attenuation = 1;
+            }else{
+                dist = distance(mySpotLights[i].pos, position);
+                attenuation = 1.0f/(mySpotLights[i].abc.z*dist*dist + mySpotLights[i].abc.y*dist + mySpotLights[i].abc.x);
+            }
             diffuse += (mySpotLights[i].Id * myMaterial.Kd * max(dot(L, N), 0.0f));
             H = normalize(L+V);
             specular += (mySpotLights[i].Is * myMaterial.Ks * pow(max(dot(H, N),0.0f), myMaterial.shiness));
         }else{
             ambient += myPointLights[i].Ia * myMaterial.Ka;
             L = normalize(myPointLights[i].pos - position);
+            if(abs(myPointLights[i].abc.x)<0.001f && abs(myPointLights[i].abc.y)<0.001f && abs(myPointLights[i].abc.z)<0.001f ){
+                attenuation = 1;
+            }else{
+                dist = distance(myPointLights[i].pos, position);
+                attenuation = 1.0f/(myPointLights[i].abc.z*dist*dist + myPointLights[i].abc.y*dist + myPointLights[i].abc.x);
+            }
             diffuse += (myPointLights[i].Id * myMaterial.Kd * max(dot(L,N), 0.0f));
             H = normalize(L+V);
             specular += (myPointLights[i].Is * myMaterial.Ks * pow(max(dot(H, N),0.0f), myMaterial.shiness));
