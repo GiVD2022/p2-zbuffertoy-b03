@@ -60,7 +60,7 @@ void main()
     gl_Position = gl_Position/gl_Position.w;
 
 
-    //color = vec4(mySpotLights[0].Ia, 1.0f);
+    //color = vec4(glAmbientLight, 1.0f);
     //color = vec4(myMaterial.Ka, 1.0f);
     color = vec4(myMaterial.Kd, 1.0f);
     //color = vec4(myMaterial.Ks, 1.0f);
