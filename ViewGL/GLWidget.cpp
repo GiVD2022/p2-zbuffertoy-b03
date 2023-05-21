@@ -111,7 +111,7 @@ void GLWidget::initShadersGPU(){
     GLShader *glshader4 = new GLShader("://resources/GPUshaders/vGouraud-PhongShader.glsl", "://resources/GPUshaders/fGouraud-PhongShader.glsl", program[4]);
     GLShader *glshader5 = new GLShader("://resources/GPUshaders/vPhong-PhongShader.glsl", "://resources/GPUshaders/fPhong-PhongShader.glsl", program[5]);
     GLShader *glshader6 = new GLShader("://resources/GPUshaders/vGouraud-Blinn-PhongShader.glsl", "://resources/GPUshaders/fGouraud-Blinn-PhongShader.glsl", program[6]);
-    GLShader *glshader7 = new GLShader("://resources/GPUshaders/vPhong-Blinn-PhongShader.glsl", "://resources/GPUshaders/fGouraud-Blinn-PhongShader.glsl", program[7]);
+    GLShader *glshader7 = new GLShader("://resources/GPUshaders/vPhong-Blinn-PhongShader.glsl", "://resources/GPUshaders/fPhong-Blinn-PhongShader.glsl", program[7]);
     GLShader *glshader8 = new GLShader("://resources/GPUshaders/vCellShader.glsl", "://resources/GPUshaders/fCellShader.glsl", program[8]);
 
 
