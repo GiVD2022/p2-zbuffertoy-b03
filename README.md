@@ -8,6 +8,7 @@ Codi de la Pràctica 2 de GiVD: ZBufferToy 2022-23
 * [Features](#Features)
 * [Extensions addicionals](#Extensions)
 * [Memòria](#Memòria)
+* [Fotografies](#Fotografies)
 
 
 ## Equip
@@ -32,9 +33,10 @@ A continuació s'indica quines parts s'han fet i qui les ha implementat
         - [x] Direccional [Nil] 
         - [x] Spotlight [Nil] 
         - [x] Conexió GPU  + vshader1.glsl implementation [Nil]
-        - [x] Arreglament de Lights [Asier]
+        - [x] Arreglament de Lights [Asier + Arturo]
     - Materials: 
-       - [x] Pas a la GPU [Arturo + Nil]
+       - [x] Inici Materials [Nil + Asier]
+       - [x] Pas a la GPU [Arturo]
        - [x] Lectura de fitxers .json: [Arturo]
     - Shading
         - [x] Color: [Arturo]
@@ -43,9 +45,9 @@ A continuació s'indica quines parts s'han fet i qui les ha implementat
             - [x] Conexió GPU: [Arturo]
         - [x] Depth: [Arturo]
             - [x] Conexió GPU: [Arturo]
-        - [] Phong-Gouraud :  [Nil]
+        - [x] Phong-Gouraud :  [Arturo]
             - [x] Conexió GPU: [Nil]
-        - [] Phong-Phong:  [Nil]
+        - [x] Phong-Phong:  [Arturo]
             - [x] Conexió GPU: [Nil]
         - [] BlinnPhong-Gouraud :
             - [x] Conexió GPU: [Nil]
@@ -88,3 +90,8 @@ A continuació s'indica quines parts s'han fet i qui les ha implementat
     Ara es crea una llum puntual al initializeGL() de la classe GLWidget, quan l’hauries de passar a la GPU? A l’inici de
     tot? Cada vegada que es visualitza l’escena? 
         
+## Fotografies
+- [ColorShading](https://github.com/GiVD2022/p2-zbuffertoy-b03/assets/72517965/2f0a62e8-087d-48ea-9e4d-98f665fa4cbf)
+- [NormalShading](https://github.com/GiVD2022/p2-zbuffertoy-b03/assets/72517965/d112f997-9bc7-4e5d-82c1-85c3035a6dd9)
+- [DepthShading](https://github.com/GiVD2022/p2-zbuffertoy-b03/assets/72517965/b2f31da9-8c0b-4edc-974d-f6d6b7b67685)
+
