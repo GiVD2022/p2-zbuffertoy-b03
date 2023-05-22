@@ -556,10 +556,10 @@ void GLMainWindow::refreshWindow() {
 // Connexions de les opcions dels menús dels shaders i els advanced
 void GLMainWindow::connectShaders()
 {
-    connect(ui->actionColor_Shader, SIGNAL(triggered()), glWidget, SLOT(activaColorShader()));
+    connect(this->ui->actionColor_Shader, SIGNAL(triggered()), glWidget, SLOT(activaColorShader()));
     connect(this->ui->action_depth, SIGNAL(triggered()), glWidget, SLOT(activaDepthShader()));
     connect(this->ui->actionNormal_Shader, SIGNAL(triggered()), glWidget, SLOT(activaNormalShader()));
-
+    connect(this->ui->actionHighlight_Region, SIGNAL(triggered()), glWidget, SLOT(activaFortniteShader()));
     connect(this->ui->action_gouraud, SIGNAL(triggered()), glWidget, SLOT(activaGouraudShader()));
     connect(this->ui->action_phong, SIGNAL(triggered()), glWidget, SLOT(activaPhongShader()));
     connect(this->ui->actionGouraud_Blinn_Phong_Shader, SIGNAL(triggered()), glWidget, SLOT(activaGouraudBlinnShader()));
