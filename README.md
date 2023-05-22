@@ -47,24 +47,24 @@ A continuació s'indica quines parts s'han fet i qui les ha implementat
             - [x] Conexió GPU: [Arturo]
         - [x] Phong-Gouraud :  [Arturo]
             - [x] Conexió GPU: [Nil]
-        - [x] Phong-Phong:  [Arturo]
+        - [x] Phong-Phong:  [Arturo + Nil]
             - [x] Conexió GPU: [Nil]
         - [x] BlinnPhong-Gouraud : [Arturo]
             - [x] Conexió GPU: [Nil]
-        - [x] BlinnPhong-Phong :  [Arturo]
+        - [x] BlinnPhong-Phong :  [Arturo + Nil]
             - [x] Conexió GPU: [Arturo + Nil]
         - [x] Cel-shading :  [Nil]
             - [x] Conexió GPU: [Nil]
     - Textures
-        - [ ] Textura com material en un objecte [Zijian]
-        - [ ] Textura al pla base [Zijian]
+        - [ ] Textura com material en un objecte [Zijian] IN PROGRESS
+        - [ ] Textura al pla base [Zijian] IN PROGRESS
     - Adaptació a la lectura de fitxers de dades
         - [ ] Escenes virtuals 
         - [ ] SetUp
         - [ ] Escenes de dades 
 
 - Fase 2 
-    - [ ] Visió nocturna 
+    - [ ] Visió nocturn IN PROGRESS
     - [x] La Tempesta de Fornite: [Asier]
         - [x] Arreglament Fortnite: [Arturo]
     - [ ] Èmfasi de siluetes 
@@ -102,7 +102,8 @@ A continuació s'indica quines parts s'han fet i qui les ha implementat
     -   Quina diferència hi ha amb el Gouraud-shading? On l'has de codificar? Necessites uns nous vertex-shader i fragment-shader?
         -   La diferencia es que per Phong es calcula al fragment, en canvi, per Gouraud es calcula al vertex. Al igual que l'anterior, necesitem un per cadascun, un per Phong Phong, i un altre per Phong Blinn-Phong.
     -   On s'implementarà el càlcul del color per a tenir més trencament entre las games de colors? Necessites uns nous vertex-shader i fragment-shader?
-        -   
+        -   Per aconseguir un major trencament de les diferents gamas de colors, es pot utilitzar una funció de mapeig no lineal per aplicar una transformació als valors de color.
+        -   Implementar aquesta funció requereix codificar nous vertex-shader i fragment-shader que permetin l'ús d'aquesta funció de mapeig no lineal als valors de color.
         
 ## Fotografies
 - [ColorShading](https://github.com/GiVD2022/p2-zbuffertoy-b03/assets/72517965/2f0a62e8-087d-48ea-9e4d-98f665fa4cbf)
