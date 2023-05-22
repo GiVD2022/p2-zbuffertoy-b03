@@ -48,6 +48,7 @@ public slots:
     void saveImage();
     void saveAnimation();
 
+    void activaFortniteShader();
     void activaColorShader();
     void activaDepthShader();
     void activaNormalShader();
@@ -91,7 +92,7 @@ protected:
     void Zoom (int positiu);
     void saveFrame();
 private:
-    int pasarShader = 1; //de momento solo puede ser 0 o 1, ya que solo hay dos parejas de shaders diferentes.
+    int pasarShader = 0; //de momento solo puede ser 0 o 1, ya que solo hay dos parejas de shaders diferentes.
     QTimer *timer;
     unsigned int currentFrame;
     unsigned int currentImage;

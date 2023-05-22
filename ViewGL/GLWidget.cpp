@@ -104,7 +104,7 @@ void GLWidget::resizeGL(int width, int height) {
  * @brief GLWidget::initShadersGPU
  */
 void GLWidget::initShadersGPU(){
-    //GLShader *glshader1 = new GLShader("://resources/GPUshaders/vshader1.glsl", "://resources/GPUshaders/fshader1.glsl", program[1]);
+    GLShader *glshader0 = new GLShader("://resources/GPUshaders/vFortniteStorm.glsl", "://resources/GPUshaders/fFortniteStorm.glsl", program[0]);
     GLShader *glshader1 = new GLShader("://resources/GPUshaders/vColorShader.glsl", "://resources/GPUshaders/fColorShader.glsl", program[1]);
     GLShader *glshader2 = new GLShader("://resources/GPUshaders/vDepthShader.glsl", "://resources/GPUshaders/fDepthShader.glsl", program[2]);
     GLShader *glshader3 = new GLShader("://resources/GPUshaders/vNormalShader.glsl", "://resources/GPUshaders/fNormalShader.glsl", program[3]);
@@ -114,9 +114,7 @@ void GLWidget::initShadersGPU(){
     GLShader *glshader7 = new GLShader("://resources/GPUshaders/vPhong-Blinn-PhongShader.glsl", "://resources/GPUshaders/fPhong-Blinn-PhongShader.glsl", program[7]);
     GLShader *glshader8 = new GLShader("://resources/GPUshaders/vCellShader.glsl", "://resources/GPUshaders/fCellShader.glsl", program[8]);
 
-
-
-    if(glshader1 != nullptr && glshader2 != nullptr && glshader3 != nullptr && glshader4 != nullptr && glshader5 != nullptr && glshader6 != nullptr && glshader7 != nullptr && glshader8 != nullptr){
+    if(glshader0 != nullptr && glshader1 != nullptr && glshader2 != nullptr && glshader3 != nullptr && glshader4 != nullptr && glshader5 != nullptr && glshader6 != nullptr && glshader7 != nullptr && glshader8 != nullptr){
         program[pasarShader]->link();
         program[pasarShader]->bind();
     }
@@ -193,6 +191,19 @@ void GLWidget::saveAnimation() {
     connect(timer, SIGNAL(timeout()), this, SLOT(setCurrentFrame()));
     timer->start(1000);
 
+}
+
+void GLWidget::activaFortniteShader() {
+    //TO DO: Pràctica 2: A implementar a la fase 1
+    this->pasarShader = 0;
+    if(program[pasarShader] != nullptr){
+        program[pasarShader]->link();
+        program[pasarShader]->bind();
+        Controller::getInstance()->getSetUp()->lightsToGPU(program[pasarShader]);
+        Controller::getInstance()->getSetUp()->setAmbientGlobalToGPU(this->program[pasarShader]);
+        updateScene();
+    }
+    qDebug()<<"Estic a Fortnite Shader";
 }
 
 void GLWidget::activaColorShader() {
