@@ -1,61 +1,106 @@
 #version 330
-uniform mat4 model_view;
-uniform mat4 projection;
-uniform vec3 globalAmbient;
-uniform vec4 obs;
 
-in vec4 color;
-in vec4 position;
-in vec2 texCoord;
-in vec4 normals;
-in float distance; //ya la calculamos en el vertex
-
-struct materials{
+struct Material {
     vec3 Ka;
     vec3 Kd;
     vec3 Ks;
-    //vec3 kt;
-    float nut;
-    float shininess;
+    float shiness;
     float opacity;
 };
 
-struct lights{
+uniform Material myMaterial;
+
+struct DirLight {
     vec3 Ia;
     vec3 Id;
     vec3 Is;
-    float a; //atenuacion
-    float b; //atenuacion
-    float c; //atenuacion
-    vec3 pos;
-    vec3 direction;
-    float anguloApertura;
-    float spotExponent;
-    int typeL;
+    vec3 dir;
 };
 
-uniform lights l[2];
-uniform materials m[1];
+uniform DirLight myDirLights[4];
+
+struct PointLight {
+    vec3 Ia;
+    vec3 Id;
+    vec3 Is;
+    vec3 abc;
+    vec4 pos;
+};
+
+uniform PointLight myPointLights[4];
+
+struct SpotLight {
+    vec3 Ia;
+    vec3 Id;
+    vec3 Is;
+    vec3 abc;
+    vec4 pos;
+    vec3 dir;
+    float cosAngle;
+};
+
+in vec4 color;
+in vec4 position;
+in vec3 normal;
+
+uniform vec3 glAmbientLight;
+uniform SpotLight mySpotLights[4];
+uniform mat4 model_view;
+uniform vec4 obs;
 out vec4 colorOut;
 
+void main()
+{/*
+    vec4 colorPhong;
+    vec4 transformedNormal = model_view * vec4(normal, 0.0);
+    vec4 normal = normalize(transformedNormal);
 
-void main() {
-    // definimos el centro  del radio
-    float stormRadius = 0.9;
-    vec3 stormCenter = vec3(0.0, 0.0, 0.0);
+    vec3 ambient = vec3(0.0);
+    vec3 diffuse = vec3(0.0);
+    vec3 specular = vec3(0.0);
 
-    if (distance >= stormRadius) {
-        // dentro de la tormenta, usamos Gouraud-Phong shading tintado de azul
-        colorOut = color;
+    vec4 L, N, V, H;
+    float attenuation, dist;
+    N = normalize(normal);
 
-    } else {
-        // fuera de la tormenta, use Phong-Phong shading
-        vec3 N = normalize(vec3(normals.x,normals.y,normals.z));
-        vec3 L = normalize(position[0] - vec3(position.x,position.y,position.z));
-        vec3 V = normalize(vec3(obs.x,obs.y,obs.z));
-        vec3 R = normalize(2.0f * dot(N,L) * N - L);
-        vec3 I = (m[0].Ka * l[0].Ia) + (m[0].Kd * l[0].Id * dot(L,N)) + (m[0].Ks * l[0].Is * pow(max(dot(V,R), 0), m[0].shininess));
-        colorOut = vec4(globalAmbient+I,1.0);
-
+    for (int i = 0; i < 4; i++) {
+        V = normalize(obs - position);
+        if(myDirLights[i].dir != vec3(0)){
+            ambient += myDirLights[i].Ia * myMaterial.Ka;
+            L = vec4(normalize(-myDirLights[i].dir), 1.0f);
+            diffuse += myDirLights[i].Id * myMaterial.Kd * max(dot(L, N), 0.0f);
+            H = normalize(L+V);
+            specular += myDirLights[i].Is * myMaterial.Ks * pow(max(dot(H, N),0.0f), myMaterial.shiness);
+        }else if(mySpotLights[i].dir != vec3(0)){
+            ambient += mySpotLights[i].Ia * myMaterial.Ka;
+            L = vec4(normalize(-mySpotLights[i].dir), 1.0f);
+            diffuse += mySpotLights[i].Id * myMaterial.Kd * max(dot(L, N), 0.0f);
+            H = normalize(L+V);
+            specular += mySpotLights[i].Is * myMaterial.Ks * pow(max(dot(H, N),0.0f), myMaterial.shiness);
+        }else{
+            ambient += myPointLights[i].Ia * myMaterial.Ka;
+            L = normalize(myPointLights[i].pos - position);
+            diffuse += myPointLights[i].Id * myMaterial.Kd * max(dot(L,N), 0.0f);
+            H = normalize(L+V);
+            specular += myPointLights[i].Is * myMaterial.Ks * pow(max(dot(H, N),0.0f), myMaterial.shiness);
+        }
     }
+
+    //fragmentColor = glAmbientLight * myMaterial.Ka
+    //fragmentColor = ambient;
+    //fragmentColor = diffuse;
+    //fragmentColor = specular;
+    colorPhong =  vec4(((glAmbientLight * myMaterial.Ka) + ambient + diffuse + specular), 1.0f);
+
+
+    if(position.x * position.x + position.y * position.y + position.z * position.z < 1){
+        vec4 tintePitufo = (0,0,1,1);
+        //colorOut = color * tintePitufo;
+        colorOut = vec4(1);
+    } else{
+        //colorOut = colorPhong;
+        colorOut = vec4(1);
+    }
+    */
+    colorOut= vec4(1);
 }
