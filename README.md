@@ -66,7 +66,7 @@ A continuació s'indica quines parts s'han fet i qui les ha implementat
 - Fase 2 
     - [ ] Visió nocturna 
     - [x] La Tempesta de Fornite: [Asier]
-        [x] Arreglament Fortnite: [Arturo]
+        - [x] Arreglament Fortnite: [Arturo]
     - [ ] Èmfasi de siluetes 
     - [ ] Mapping indirecte de textures
     - [ ] Animacions amb dades temporals
