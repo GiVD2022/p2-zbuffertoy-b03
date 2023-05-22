@@ -91,11 +91,6 @@ void main() {
             specular += myPointLights[i].Is * myMaterial.Ks * pow(max(dot(V, R),0.0f), myMaterial.shiness);
         }
     }
-
-    //color = glAmbientLight * myMaterial.Ka
-    //color = ambient;
-    //color = diffuse;
-    //color = specular;
     color =  (glAmbientLight * myMaterial.Ka) + ambient + diffuse + specular;
     gl_Position = projection * model_view * vPosition;
     gl_Position = gl_Position / gl_Position.w;

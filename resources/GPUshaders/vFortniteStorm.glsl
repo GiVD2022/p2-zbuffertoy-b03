@@ -1,78 +1,104 @@
 #version 330
+
 layout (location = 0) in vec4 vPosition;
 layout (location = 1) in vec4 vColor;
-layout (location = 2) in vec4 vNormals;
-layout (location = 3) in vec2 vTexCoord;
+layout (location = 2) in vec3 vNormal;
 
-uniform mat4 model_view;
-uniform mat4 projection;
-uniform vec3 globalAmbient;
-uniform vec4 obs;
-
-struct materials{
+struct Material {
     vec3 Ka;
     vec3 Kd;
     vec3 Ks;
-    float shininess;
+    float shiness;
     float opacity;
 };
 
-struct lights{
+uniform Material myMaterial;
+
+struct DirLight {
     vec3 Ia;
     vec3 Id;
     vec3 Is;
-    float a; //atenuacion
-    float b; //atenuacion
-    float c; //atenuacion
-    vec3 pos;
-    vec3 direction;
-    float anguloApertura;
-    float spotExponent;
-    int typeL;
+    vec3 dir;
 };
 
-uniform lights l[5];
-uniform materials m[1];
+uniform DirLight myDirLights[4];
+
+struct PointLight {
+    vec3 Ia;
+    vec3 Id;
+    vec3 Is;
+    vec3 abc;
+    vec4 pos;
+};
+
+uniform PointLight myPointLights[4];
+
+struct SpotLight {
+    vec3 Ia;
+    vec3 Id;
+    vec3 Is;
+    vec3 abc;
+    vec4 pos;
+    vec3 dir;
+    float cosAngle;
+};
+
+uniform SpotLight mySpotLights[4];
+
+uniform vec4 obs;
+uniform mat4 model_view;
+uniform mat4 projection;
+uniform vec3 glAmbientLight;
 
 out vec4 color;
-//out vec4 gouraud_color;
 out vec4 position;
-out vec2 texCoord;
-out vec4 normals;
-out float distanceOut; //pasamos como out para no calularla 2 veces
+out vec3 normal;
 
-void main(){
+
+void main() {
+
+    normal = vNormal;
     position = vPosition;
-    normals = vNormals;
-    texCoord = vTexCoord;
 
-    gl_Position = projection*model_view*vPosition;
-    gl_Position = gl_Position/gl_Position.w;
+    vec4 transformedNormal = model_view * vec4(vNormal, 0.0);
+    vec4 normal_temp = normalize(transformedNormal);
 
-    // definimos el centro y el radio
-    float stormRadius = 0.9;
-    vec3 stormCenter = vec3(0.0, 0.0, 0.0);
+    vec3 ambient = vec3(0.0);
+    vec3 diffuse = vec3(0.0);
+    vec3 specular = vec3(0.0);
 
-    // calculamos la distancia
-    //color = vec4(vec3(gl_FragCoord.z), 1.0);
-    float distance = abs(gl_FragCoord.z - stormCenter.z);
-    distanceOut = distance;
+    vec4 L, N, V, R;
+    float attenuation, dist, cos;
+    N = normalize(normal_temp);
 
-    if (distance >= stormRadius) {
-        // dentro d la tormenta usamos el gouraud con tinte azul
-        vec3 N = normalize(vec3(vNormals.x,vNormals.y,vNormals.z));
-        vec3 L = normalize(position[0] - vec3(vPosition.x,vPosition.y,vPosition.z));
-        vec3 V = normalize(vec3(obs.x,obs.y,obs.z));
-        vec3 R = normalize(2.0f * dot(N,L) * N - L);
-        vec3 I = m[0].Ka*l[0].Ia + m[0].Kd*l[0].Id*dot(L,N) + m[0].Ks*l[0].Is*pow(max(dot(V,R), 0), m[0].shininess);
-        vec4 gouraud = vec4(globalAmbient+I,1.0);
-
-        vec4 tintedColor = vec3(0.0, 0.0, 1.0,1.0); // tinte azul
-        color = vec4(tintedColor*gouraud); //asi aplicamos tinte azul
-
-    } else {
-        // fuera de la tormenta usamos phong phong
-        color = vColor;
+    for (int i = 0; i < 4; i++) {
+        V = normalize(obs - vPosition);
+        if(myDirLights[i].dir != vec3(0)){
+            ambient += myDirLights[i].Ia * myMaterial.Ka;
+            L = vec4(normalize(-myDirLights[i].dir), 1.0f);
+            cos = dot(L, N);
+            R = 2.0f * N * cos - L;
+            diffuse += myDirLights[i].Id * myMaterial.Kd * cos;
+            specular += myDirLights[i].Is * myMaterial.Ks * pow(max(dot(V, R),0.0f), myMaterial.shiness);
+        }else if(mySpotLights[i].dir != vec3(0)){
+            ambient += mySpotLights[i].Ia * myMaterial.Ka;
+            L = vec4(normalize(-mySpotLights[i].dir), 1.0f);
+            cos = dot(L, N);
+            R = 2.0f * N * cos - L;
+            diffuse += mySpotLights[i].Id * myMaterial.Kd * cos;
+            specular += mySpotLights[i].Is * myMaterial.Ks * pow(max(dot(V, R),0.0f), myMaterial.shiness);
+        }else{
+            ambient += myPointLights[i].Ia * myMaterial.Ka;
+            L = normalize(myPointLights[i].pos - vPosition);
+            cos = dot(L, N);
+            R = 2.0f * N * cos - L;
+            diffuse += myPointLights[i].Id * myMaterial.Kd * cos;
+            specular += myPointLights[i].Is * myMaterial.Ks * pow(max(dot(V, R),0.0f), myMaterial.shiness);
+        }
     }
-
+    color =  vec4((glAmbientLight * myMaterial.Ka) + ambient + diffuse + specular, 1);
+    gl_Position = projection * model_view * vPosition;
+    gl_Position = gl_Position / gl_Position.w;
 }
+
+
