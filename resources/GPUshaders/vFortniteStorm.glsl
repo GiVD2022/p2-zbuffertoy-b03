@@ -50,13 +50,12 @@ uniform mat4 model_view;
 uniform mat4 projection;
 uniform vec3 glAmbientLight;
 
-out vec4 color;
+out vec3 color;
 out vec4 position;
 out vec3 normal;
 
 
 void main() {
-
     normal = vNormal;
     position = vPosition;
 
@@ -96,7 +95,7 @@ void main() {
             specular += myPointLights[i].Is * myMaterial.Ks * pow(max(dot(V, R),0.0f), myMaterial.shiness);
         }
     }
-    color =  vec4((glAmbientLight * myMaterial.Ka) + ambient + diffuse + specular, 1);
+    color = (glAmbientLight * myMaterial.Ka) + ambient + diffuse + specular;
     gl_Position = projection * model_view * vPosition;
     gl_Position = gl_Position / gl_Position.w;
 }

@@ -39,7 +39,7 @@ struct SpotLight {
     float cosAngle;
 };
 
-in vec4 color;
+in vec3 color;
 in vec4 position;
 in vec3 normal;
 
@@ -50,8 +50,8 @@ uniform vec4 obs;
 out vec4 colorOut;
 
 void main()
-{/*
-    vec4 colorPhong;
+{
+    vec3 colorPhong;
     vec4 transformedNormal = model_view * vec4(normal, 0.0);
     vec4 normal = normalize(transformedNormal);
 
@@ -90,17 +90,14 @@ void main()
     //fragmentColor = ambient;
     //fragmentColor = diffuse;
     //fragmentColor = specular;
-    colorPhong =  vec4(((glAmbientLight * myMaterial.Ka) + ambient + diffuse + specular), 1.0f);
-
+    colorPhong =  (glAmbientLight * myMaterial.Ka) + ambient + diffuse + specular;
+    //colorOut = vec4(colorPhong, 1.0f);
 
     if(position.x * position.x + position.y * position.y + position.z * position.z < 1){
-        vec4 tintePitufo = (0,0,1,1);
-        //colorOut = color * tintePitufo;
-        colorOut = vec4(1);
+        vec3 tintePitufo = vec3(0,0,1);
+        colorOut = vec4(color * tintePitufo, 1.0f);
     } else{
-        //colorOut = colorPhong;
-        colorOut = vec4(1);
+        colorOut = vec4(colorPhong, 1.0f);
     }
-    */
-    colorOut= vec4(1);
+
 }
