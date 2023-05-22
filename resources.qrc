@@ -46,5 +46,7 @@
         <file>resources/textures/ennis.png</file>
         <file>resources/textures/grace-new.png</file>
         <file>resources/textures/metal_crosshatch_pattern_6190173.JPG</file>
+        <file>resources/GPUshaders/fFortniteStorm.glsl</file>
+        <file>resources/GPUshaders/vFortniteStorm.glsl</file>
     </qresource>
 </RCC>
