@@ -12,9 +12,11 @@ GPUSpotLight::GPUSpotLight() {
 void GPUSpotLight::toGPU(shared_ptr<QGLShaderProgram> p) {
     qDebug() << "SpotLights toGPU.....";
     program = p;
-    int index;
+
 
     //Hola! Això em permet agafar el termet i-essim, agafo getter i setter de la classe Light!
+    int index;
+
     //index = SpotLight::getIndex();
     index = 0;
 

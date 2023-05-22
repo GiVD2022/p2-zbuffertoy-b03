@@ -12,7 +12,7 @@ void GPUPointLight::toGPU(shared_ptr<QGLShaderProgram> p) {
     program = p;
     int index;
 
-    //index = PointLight::getIndex(); //no funciona el index ns xq me raya
+    //index = PointLight::getIndex();
     index = 0;
 
     // Obtenir ubis de les variables del Shader

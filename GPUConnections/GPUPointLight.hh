@@ -36,5 +36,7 @@ private:
     };
 
     gl_pointLight gl_my_pointLights[5];
+
+    //int index;
 };
 

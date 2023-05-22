@@ -12,11 +12,19 @@ GPUMesh::GPUMesh()
      if(!textVertexs.empty())initTexture();
 
     //inicialitzem dates N6
+     /*
     vec3 ambient(0.2f,  0.02f, 0.02f);
     vec3  diffuse(0.8f, 0.5f, 0.5f);
     vec3 specular(1.0f, 1.0f, 1.0f);
     float shininess = 20.0f;
     float opacity = 2.0f;
+    */
+
+     vec3 ambient(0.2f,  0.02f, 0.02f);
+     vec3  diffuse(0.8f, 0.5f, 0.5f);
+     vec3 specular(1.0f, 1.0f, 1.0f);
+     float shininess = 20.0f;
+     float opacity = 2.0f;
 
     material = make_shared<GPUMaterial>(ambient, diffuse, specular, shininess, opacity);
 
