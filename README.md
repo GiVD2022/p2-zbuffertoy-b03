@@ -87,8 +87,25 @@ A continuació s'indica quines parts s'han fet i qui les ha implementat
     -> Pasarem la llum ambient global, al initialieGL (metode de la classe GlWidget), es a dir, al inicialitzar l'aplicació. Ja que volem que la llum ambient global, 
         sigui estàtica, i no es modifiqui durant el trancurs de l'execució.
     
+    Què contindrà el "struct" de la GPU? Com l’estructurareu?
+    -> El struct de cada llum ha de tenir les variables de cada llum, per exemple:
+        - DirectionalLight: Ia, Id, Is, dir
+        - SpotLight: Ia, Id, Is, abc, dir, pos, angle
+        - PointLight: Ia, Id, Is, abc, pos
+    -> L'estructurarem d'aquesta manera, i com el toGPU de GPULight es la mare dels tres fills, a cada tipus de GPU de la llum omplirem cada struct a la GPU.
     Ara es crea una llum puntual al initializeGL() de la classe GLWidget, quan l’hauries de passar a la GPU? A l’inici de
     tot? Cada vegada que es visualitza l’escena? 
+    -> Cada vegada que es visualitza l'escena, es pot incloure a update o cada vegada que trucas a un shader, fer una trucada a lightsTOGPU(). 
+    Des d’on es cridarà aquest mètode?
+    -> Aquest metode es crida desde GPUScene, on per a cada objecte, cridem al toGPU.
+    Si vols utilitzar diferents shaders en temps d'execució raona on s'inicialitzaran els shaders i com controlar quin shader s'usa? Cal tornar a passar l'escena a la GPU quan es canvia de shader?
+    -> Nosaltres els controlem amb el pasarShader on initicialitzem primerament aquest amb el colorShading, i despres d'inicialitzar tots els shaders, a cada activar el shader, posem aquest pasarShader al valor que hagem possat al program a initShadersToGPU. Cada vegada que canviem de shader s'ha de fer el link, bind, cridar les llums de nou i fer un updateGL.
+    Cal tenir un parell de vèrtex-fragment shader? O dos?
+    -> Hem de tenir un vertex-fragment shader per cadascun, un per Blinn-Phong i un per Phong.
+    Quina diferència hi ha amb el Gouraud-shading? On l'has de codificar? Necessites uns nous vertex-shader i fragment-shader?
+    -> La diferencia es que per Phong es calcula al fragment, en canvi, per Gouraud es calcula al vertex. Al igual que l'anterior, necesitem un per cadascun, un per Phong Phong, i un altre per Phong Blinn-Phong.
+    On s'implementarà el càlcul del color per a tenir més trencament entre las games de colors? Necessites uns nous vertex-shader i fragment-shader?
+    -> 
         
 ## Fotografies
 - [ColorShading](https://github.com/GiVD2022/p2-zbuffertoy-b03/assets/72517965/2f0a62e8-087d-48ea-9e4d-98f665fa4cbf)
