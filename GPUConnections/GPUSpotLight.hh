@@ -18,6 +18,8 @@ private:
 
     gl_spotLight gl_my_spotLights[7];
 
+    //int index;
+
 public:
     GPUSpotLight();
     /*

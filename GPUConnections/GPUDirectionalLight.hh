@@ -33,4 +33,6 @@ private:
 
     gl_dirLights gl_my_dirLights[4];
 
+    //int index;
+
 };

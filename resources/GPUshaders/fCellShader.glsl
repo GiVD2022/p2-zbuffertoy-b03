@@ -83,10 +83,10 @@ void main()
         }
     }
 
-    // Calculate the intensity of the shading
+    // Intensitat shading
     float intensity = dot(diffuse+specular, vec3(0.5, 0.5, 0.5));
 
-    // Set the shading color based on the intensity
+    // posem els colors, basats en la seva intensitat
     vec3 shadingColor = vec3(0.0, 0.0, 0.0);
     if (intensity > 0.95)
         shadingColor = vec3(1.0, 1.0, 1.0);
@@ -97,6 +97,6 @@ void main()
     else
         shadingColor = vec3(0.4, 0.4, 0.4);
 
-    // Combine the shading color with the ambient, diffuse, and specular components
+    // Combinem tots els colors basats amb el seu material
     fragmentColor = vec4(((glAmbientLight * myMaterial.Ka) + ambient) * shadingColor + diffuse + specular, 1.0f);
 }
