@@ -5,6 +5,13 @@ GPUPointLight::GPUPointLight(vec3 Ia, vec3 Id, vec3 Is, vec3 abc, vec4 pos): Poi
 }
 
 GPUPointLight::GPUPointLight() {
+    PointLight::Ia = vec3(0.2);
+    PointLight::Id = vec3 (0.8);
+    PointLight::Is = vec3(1);
+    PointLight::a = 0.5;
+    PointLight::b = 0.0;
+    PointLight::c = 0.01;
+    PointLight::pos = vec3 (10,10,20);
 }
 
 void GPUPointLight::toGPU(shared_ptr<QGLShaderProgram> p) {
@@ -30,7 +37,7 @@ void GPUPointLight::toGPU(shared_ptr<QGLShaderProgram> p) {
     glUniform3fv(gl_my_pointLights[index].glId, 1, this->PointLight::getId());
     glUniform3fv(gl_my_pointLights[index].glIs, 1, this->PointLight::getIs());
     glUniform3fv(gl_my_pointLights[index].glABC, 1, this->PointLight::getCoeficients());
-    glUniform4fv(gl_my_pointLights[index].glPos, 1, this->PointLight::getLightPosition());
+    glUniform4fv(gl_my_pointLights[index].glPos, 1, this->PointLight::getPos());
 
 
     qDebug() << "PointLights toGPU3.....";

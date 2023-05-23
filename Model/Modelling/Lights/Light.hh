@@ -38,8 +38,6 @@ public:
     Light();
     vec3 getIa();
     vec3 getId();
-
-
     vec3 getIs();
 
     //Calcula el factor d'atenuacio de la llum al punt passat per parametre
@@ -56,21 +54,9 @@ public:
 
     virtual ~Light() {};
 
-    vec4 getLightPosition();
-    void setLightPosition(vec4 v);
-
     void setIa(const vec3 &value);
     void setId(vec3 i);
     void setIs(const vec3 &value);
-
-    vec3 getCoeficients() const;
-    void setCoeficients(const vec3 &value);
-
-    vec3 getDirLight();
-    void setDirLight(vec3 v);
-
-    float getCosAngle();
-    void setCosAngle(float cos);
 
     int getIndex();
     void setIndex(int i);

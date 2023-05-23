@@ -7,6 +7,17 @@ GPUSpotLight::GPUSpotLight(vec3 Ia, vec3 Id, vec3 Is, vec3 abc, vec4 pos, vec3 d
 }
 
 GPUSpotLight::GPUSpotLight() {
+    /*
+    SpotLight::Ia = vec3(0.2);
+    SpotLight::Id = vec3 (0.8);
+    SpotLight::Is = vec3(1);
+    SpotLight::a = 0.5;
+    SpotLight::b = 0.0;
+    SpotLight::c = 0.01;
+    SpotLight::pos = vec3 (10,10,20);
+    SpotLight::dir = vec3(5);
+    SpotLight::cosAngle = 30;
+    */
 }
 
 void GPUSpotLight::toGPU(shared_ptr<QGLShaderProgram> p) {
@@ -37,9 +48,9 @@ void GPUSpotLight::toGPU(shared_ptr<QGLShaderProgram> p) {
     glUniform3fv(gl_my_spotLights[index].glId, 1, this->SpotLight::getId());
     glUniform3fv(gl_my_spotLights[index].glIs, 1, this->SpotLight::getIs());
     glUniform3fv(gl_my_spotLights[index].glABC, 1, this->SpotLight::getCoeficients());
-    glUniform4fv(gl_my_spotLights[index].glPos, 1, this->SpotLight::getLightPosition());
-    glUniform3fv(gl_my_spotLights[index].glDir, 1, this->SpotLight::getDirLight());
-    glUniform1f(gl_my_spotLights[index].glCosAngle, this->SpotLight::getCosAngle());
+    glUniform4fv(gl_my_spotLights[index].glPos, 1, this->SpotLight::getPos());
+    glUniform3fv(gl_my_spotLights[index].glDir, 1, this->SpotLight::getDir());
+    glUniform1f(gl_my_spotLights[index].glCosAngle, this->SpotLight::getAngle());
 
     qDebug() << "SpotLights toGPU3.....";
 }

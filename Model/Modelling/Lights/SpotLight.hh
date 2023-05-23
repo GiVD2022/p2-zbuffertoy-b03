@@ -21,6 +21,9 @@ public:
     virtual ~SpotLight() {}
     vec3 getPos();
     vec3 getDir();
+    float getAngle();
+    vec3 getCoeficients();
+
     virtual vec3 vectorL(vec3 point) override;
     virtual float attenuation(vec3 point) override;
     virtual float distanceToLight(vec3 point) override;
@@ -31,7 +34,6 @@ public:
 protected:
     vec3 pos;       // posicio de la llum
     vec3 dir;       // dirección hacia la que apunta la luz
-    vec3 abc;
     float a;        // atenuación: término constante
     float b;        // atenuación: término lineal
     float c;        // atenuación: término cuadrático

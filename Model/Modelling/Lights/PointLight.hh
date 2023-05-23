@@ -20,7 +20,7 @@ public:
     PointLight(vec3 Ia, vec3 Id, vec3 Is, vec3 abc, vec4 posicio);
     virtual ~PointLight() {}
     vec3 getPos();
-
+    vec3 getCoeficients();
     //Afegeixo getters del terme constant, lineal i quadratic (N6)
     float getA();
     float getB();
