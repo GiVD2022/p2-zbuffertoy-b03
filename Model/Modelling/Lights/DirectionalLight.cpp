@@ -6,10 +6,6 @@ DirectionalLight::DirectionalLight(vec3 Ia, vec3 Id, vec3 Is, vec3 dir) :
 }
 
 DirectionalLight::DirectionalLight() {
-    this->Ia = vec3(0.2);
-    this->Id = vec3 (0.8);
-    this->Is = vec3(1.0);
-    this->dir = vec3(5);
 }
 
 vec3 DirectionalLight::getDir() {

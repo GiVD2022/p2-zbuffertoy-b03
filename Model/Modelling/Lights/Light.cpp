@@ -82,61 +82,6 @@ void Light::setId(vec3 i) {
 
 }
 
-/**
- * @brief Light::setLightPosition
- * @param v
- */
-
-vec4 Light::getLightPosition(){
-    //done n6
-    return this->pos;
-}
-
-void Light::setLightPosition(vec4 v) {
-    // TO DO: Pràctica 2: A canviar a la fase 1
-    //done n6
-    this->pos = v;
-}
-
-
-/**
- * @brief Light::getCoeficients
- * @return
- */
-vec3 Light::getCoeficients() const
-{
-    // TO DO: Pràctica 2: A canviar a la fase 1
-    //Done N6
-       return this->abc;
-}
-
-/**
- * @brief Light::setCoeficients
- * @param value
- */
-void Light::setCoeficients(const vec3 &value)
-{
-   // TO DO: Pràctica 2: A canviar a la fase 1
-    //Done N6
-    this->abc = value;
-}
-
-vec3 Light::getDirLight(){
-    return this->dir;
-}
-
-void Light::setDirLight(vec3 v){
-    this->dir = v;
-}
-
-float Light::getCosAngle(){
-    return this->cosAngle;
-}
-
-void Light::setCosAngle(float cos){
-    this->cosAngle = cos;
-}
-
 int Light::getIndex(){
     return this->index;
 }

@@ -7,6 +7,12 @@ GPUDirectionalLight::GPUDirectionalLight(vec3 Ia, vec3 Id, vec3 Is, vec3 dir) :
 }
 
 GPUDirectionalLight::GPUDirectionalLight() {
+    /*
+    DirectionalLight::Ia = vec3(0.2);
+    DirectionalLight::Id = vec3 (0.8);
+    DirectionalLight::Is = vec3(1);
+    DirectionalLight::dir = vec3(1);
+    */
 }
 
 void GPUDirectionalLight::toGPU(shared_ptr<QGLShaderProgram> p) {
@@ -31,7 +37,7 @@ void GPUDirectionalLight::toGPU(shared_ptr<QGLShaderProgram> p) {
     glUniform3fv(gl_my_dirLights[index].glIa, 1, this->DirectionalLight::getIa());
     glUniform3fv(gl_my_dirLights[index].glId, 1, this->DirectionalLight::getId());
     glUniform3fv(gl_my_dirLights[index].glIs, 1, this->DirectionalLight::getIs());
-    glUniform3fv(gl_my_dirLights[index].glDir, 1, this->DirectionalLight::getDirLight());
+    glUniform3fv(gl_my_dirLights[index].glDir, 1, this->DirectionalLight::getDir());
 
     qDebug() << "Light toGPU3.....";
 }
