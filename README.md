@@ -47,11 +47,11 @@ A continuació s'indica quines parts s'han fet i qui les ha implementat
             - [x] Conexió GPU: [Arturo]
         - [x] Phong-Gouraud :  [Arturo]
             - [x] Conexió GPU: [Nil]
-        - [x] Phong-Phong:  [Arturo + Nil]
+        - [x] Phong-Phong:  [Arturo]
             - [x] Conexió GPU: [Nil]
         - [x] BlinnPhong-Gouraud : [Arturo]
             - [x] Conexió GPU: [Nil]
-        - [x] BlinnPhong-Phong :  [Arturo + Nil]
+        - [x] BlinnPhong-Phong :  [Arturo]
             - [x] Conexió GPU: [Arturo + Nil]
         - [x] Cel-shading :  [Nil]
             - [x] Conexió GPU: [Nil]
@@ -106,7 +106,17 @@ A continuació s'indica quines parts s'han fet i qui les ha implementat
         -   Implementar aquesta funció requereix codificar nous vertex-shader i fragment-shader que permetin l'ús d'aquesta funció de mapeig no lineal als valors de color.
         
 ## Fotografies
-- [ColorShading](https://github.com/GiVD2022/p2-zbuffertoy-b03/assets/72517965/2f0a62e8-087d-48ea-9e4d-98f665fa4cbf)
-- [NormalShading](https://github.com/GiVD2022/p2-zbuffertoy-b03/assets/72517965/d112f997-9bc7-4e5d-82c1-85c3035a6dd9)
-- [DepthShading](https://github.com/GiVD2022/p2-zbuffertoy-b03/assets/72517965/b2f31da9-8c0b-4edc-974d-f6d6b7b67685)
+-   [ColorShading](https://github.com/GiVD2022/p2-zbuffertoy-b03/assets/72517965/2f0a62e8-087d-48ea-9e4d-98f665fa4cbf)
+-   [NormalShading](https://github.com/GiVD2022/p2-zbuffertoy-b03/assets/72517965/d112f997-9bc7-4e5d-82c1-85c3035a6dd9)
+-   [DepthShading](https://github.com/GiVD2022/p2-zbuffertoy-b03/assets/72517965/b2f31da9-8c0b-4edc-974d-f6d6b7b67685)
+-   [Gouraud Phong](https://github.com/GiVD2022/p2-zbuffertoy-b03/assets/72517965/ccbdeb94-22f7-41a0-a707-472d7a2a87d9)
+-   [Phong Phong](https://github.com/GiVD2022/p2-zbuffertoy-b03/assets/72517965/0cb5bd2e-a30f-4d47-bc40-326c6ecc48d9)
+-   [Gouraud Blinn-Phong](https://github.com/GiVD2022/p2-zbuffertoy-b03/assets/72517965/bb73a792-2833-4996-b207-885b35e8233c)
+-   [Phong Blinn-Phong](https://github.com/GiVD2022/p2-zbuffertoy-b03/assets/72517965/312b0860-d450-4cd2-86ff-c35ef13b68fe)
+-   [Toon](https://github.com/GiVD2022/p2-zbuffertoy-b03/assets/72517965/c38b836a-3e1a-45ff-ac36-9ca87a5850c2)
+-   [Fortnite Storm](https://github.com/GiVD2022/p2-zbuffertoy-b03/assets/72517965/1462c658-7b7c-4b95-9e6e-1ee53c693213)
+
+
+
+
 
